@@ -73,3 +73,5 @@ const example = new bcworkshop.Beyblade({
 .attachPassive(WizardZero)
 .setDefaultSD("Left");
 module.exports = example;
+
+// gg this was made by Cryocial
