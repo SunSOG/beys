@@ -6,11 +6,11 @@ function SACheck(acted, victim, logger){
 }
 
 function SAExecute(acted, victim, logger){
-    let effect1 = 40 + 0.4 * acted.lvl;
+    let effect1 = 10 + 0.2 * acted.lvl;
     let effect2 = 1 + 0.01 * acted.lvl;
-    victim.hp -= effect1;
+    victim.stability -= effect1;
     victim.stamina -= effect2;
-    logger.add(`Wizard Fafnir used **Wizard Blow!**`);
+    logger.add(`[${acted.username}] Wizard Fafnir used **Wizard Blow**!`);
 }
 
 const WizardBlow = new bcworkshop.Special("Wizard Blow", SACheck, SAExecute);
