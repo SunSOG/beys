@@ -75,6 +75,7 @@ const HallowXcalibur = new bcworkshop.Beyblade({name: "Hallow Xcalibur", type: "
 .attachSpecial(HallowSaber)
 .attachPassive(HallowCharge)
 .attachPassive(HallowStrength)
+.attachPassive(Resurrection)
 .attachMode(HallowMode);
 
 module.exports = HallowXcalibur;
