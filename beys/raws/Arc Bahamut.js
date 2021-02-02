@@ -33,9 +33,10 @@ function LoneWolfResonanceRequirements(acted, victim, logger){//Lone Wolf Resona
 function LoneWolfResonanceEffects(acted, victim, logger){//Lone Wolf Resonance Effects
       acted.hp += (victim.atk/100 * 60 + .3 * acted.lvl);
       victim.atk = (victim.atk/100 * 40 - .3 * acted.lvl);
+      logger.add(`Arc Bahamut used **Lone Wolf's Resonance**!`)
 }
 
-const LoneWolfResonance = new bcworkshop.Special("Lone Wolf Resonance", LoneWolfResonanceRequirements, LoneWolfResonanceEffects);
+const LoneWolfResonance = new bcworkshop.Special("Lone Wolf's Resonance", LoneWolfResonanceRequirements, LoneWolfResonanceEffects);
 
 const ArcBahamut = new bcworkshop.Beyblade({name: "Arc Bahamut", type: "Defense", imageLink: "https://imgur.com/a/rbqnFgK", aliases: "Arc Balkesh"})
 
