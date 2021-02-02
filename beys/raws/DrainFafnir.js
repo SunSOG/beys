@@ -1,7 +1,7 @@
 const bcworkshop = require("bcworkshop");
 
 function DrainSpinRequirements(acted, victim, logger){//Drain Spin Requirements
-     return acted.stamina < victim.stamina && acted.sp >= .5 && victim.move == fight
+     return acted.stamina < victim.stamina && acted.sp >= .5 && acted.sp < 3 && victim.move == fight
 }
 
 function DrainSpinEffects(acted, victim, logger){//Drain Spin Effects
@@ -46,7 +46,7 @@ function TrueDrainSpinRequirements(acted, victim, logger){//True Drain Spin Requ
 function TrueDrainSpinEffects(acted, victim, logger){//True Drain Spin Effects
      victim.stamina -= (1 + .002 * acted.lvl);
      acted.stamina += (1 + .002 * acted.lvl);
-     acted.sp -= .5;
+     acted.sp -= 1;
 }
 
 const TrueDrainSpin = new bcworkshop.Mode("True Drain Spin", TrueDrainSpinRequirements, TrueDrainSpinEffects)
