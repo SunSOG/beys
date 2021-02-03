@@ -59,4 +59,5 @@ const DrainFafnir = new bcworkshop.Beyblade({name: "Drain Fafnir", type: "Stamin
 .attachMode(TrueDrainSpin)
 .attachMode(FullPowerResonance)
 .setDefaultSD("Left");
+
 module.exports = DrainFafnir;
