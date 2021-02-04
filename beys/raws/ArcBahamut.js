@@ -13,7 +13,7 @@ const FinalGuard = new bcworkshop.Mode("Final Guard", FinalGuardRequirement, Fin
 
 
 function FinalCrashRequirement(acted, victim, logger){//Final Crash Requirements
-     return acted.sp <= 3 && acted.hp <= (acted.maxhp/100 * 25) && victim.move == fight
+     return acted.sp <= 3 && acted.hp <= (acted.maxhp/100 * 25) && victim.move == "fight"
 }
 
 function FinalCrashEffect(acted, victim, logger){//Final Crash Effects

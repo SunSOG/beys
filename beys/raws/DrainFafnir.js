@@ -1,7 +1,7 @@
 const bcworkshop = require("bcworkshop");
 
 function DrainSpinRequirements(acted, victim, logger){//Drain Spin Requirements
-     return acted.stamina < victim.stamina && acted.sp >= .5 && acted.sp < 3 && victim.move == fight
+     return acted.stamina < victim.stamina && acted.sp >= .5 && acted.sp < 3 && victim.move == "fight"
 }
 
 function DrainSpinEffects(acted, victim, logger){//Drain Spin Effects
@@ -40,7 +40,7 @@ const FullPowerResonance = new bcworkshop.Mode("Full Power Resonance", FullPower
 
 
 function TrueDrainSpinRequirements(acted, victim, logger){//True Drain Spin Requirements
-     return acted.stamina < victim.stamina && acted.sp >= 3 && victim.move == fight
+     return acted.stamina < victim.stamina && acted.sp >= 3 && victim.move == "fight"
 }
 
 function TrueDrainSpinEffects(acted, victim, logger){//True Drain Spin Effects
