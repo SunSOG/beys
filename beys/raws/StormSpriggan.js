@@ -37,11 +37,22 @@ function UpperLaunchEffect(acted, victim, logger){//Upper Launch Effect
 const UpperLaunch = new bcworkshop.Special("Upper Launch", UpperLaunchRequirement, UpperLaunchEffect);
 
 
+function DeterminationResonanceRequirement(acted, victim, logger){//Determination Resonance Requirement
+    return acted.hp <= (acted.maxhp/100 * 50)
+}
+
+function DeterminationResonanceEffect(acted, victim, logger){//Determination Resonance Effect
+    acted.hp += (acted.maxhp/100 * 20 + .1 * acted.lvl);
+}
+
+const DeterminationResonance = new bcworkshop.Passive("Determination Resonance", DeterminationResonanceRequirement, DeterminationResonanceEffect, 240);
+
 
 const StormSpriggan = new bcworkshop.Beyblade({name: "Storm Spriggan", type: "Balance", imageLink: "https://vignette.wikia.nocookie.net/beyblade/images/a/a7/Beyblade_Spriggan.png/revision/latest?cb=20181218235223", aliases: "Storm Spryzen"})
 
 .attachPassive(CounterBreak)
 .attachSpecial(UpperLaunch)
+.attachPassive(DeterminationResonance)
 .addProperty("TrueCounterChance", "(Math.floor(Math.random() * 2))")
 .setDefaultSD("Right");
 module.exports = StormSpriggan; 
