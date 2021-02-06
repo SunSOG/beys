@@ -1,11 +1,11 @@
 const bcworkshop = new require("bcworkshop");
 
-const passive = new bcworkshop.Passive("Passive", function check(acted, victim, message, player){
+const passive = new bcworkshop.Passive("Passive", function check(acted, victim, message){
           let bool;
           if(acted.hp < (acted.maxhp / 100 * 65)) bool = true;
           else bool = false;
           return bool;
-      }, function passed(acted, victim, message, player){
+      }, function passed(acted, victim, message){
           if(acted.bey.armour){
               victim.atk = 0;
               victim.hp = victim.hp - 20;
@@ -25,7 +25,7 @@ const passive = new bcworkshop.Passive("Passive", function check(acted, victim, 
           }
       }, 180);
 
-const special = new bcworkshop.Special("Special", function req(acted, victim, logger){return acted.sp > 3}, function special(acted, victim, message, player){
+const special = new bcworkshop.Special("Special", function req(acted, victim, logger){return acted.sp > 3}, function special(acted, victim, message){
         let decide = Math.round(Math.random() * 1);
         if(decide === 1){
         

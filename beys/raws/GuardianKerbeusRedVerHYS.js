@@ -13,18 +13,17 @@ const passive = new bcworkshop.Passive("Passive", function check(acted, victim, 
 
 const special = new bcworkshop.Special("Special", function req(acted, victim, logger){return acted.sp > 3}, function special(acted, victim, message){
     
-    victim.hp = victim.hp - 50;
-    acted.hp = acted.hp - 8;
+    victim.hp = victim.hp - 40;
     let embed = new Discord.MessageEmbed()
-    .setTitle(`[${acted.username}] Dead Phoenix used **Dead Armour Press**. 50damage dealt. [${acted.username}] Dead Phoenix also lost some HP due to it's armour accidentally hitting itself.`)
+    .setTitle(`[${acted.username}] Guardian Kerbeus Red Ver. <:haoyunshu:669481031400816650> used **Lucky Dance 好运舞**. 48 damage dealt. May the luck be with you.`)
     .setColor("#551a8b");
     message.channel.send(embed);
   });
 
-const DeadPhoenix = new bcworkshop.Beyblade({name: "Dead Phoenix", type: "Defense", imageLink: "https://vignette.wikia.nocookie.net/beyblade/images/e/ec/BBC_Dead_Phoenix_0_Atomic_Beyblade.png/revision/latest?cb=20190131010643"})
+const GuardianKerbeusRedVerhaoyunshu669481031400816650 = new bcworkshop.Beyblade({name: "Guardian Kerbeus Red Ver. <:haoyunshu:669481031400816650>", type: "Stamina", imageLink: "https://cdn.glitch.com/7f7cfead-eec3-467c-866a-948e538f87c9%2F7411BF2F-B805-4384-8E2C-5E7FAD650A73.jpeg?v=1579684506649"})
 .attachPassive(passive)
 .attachSpecial(special)
 .setDefaultSD("RIGHT")
 .setSDChangable(false);
 
-module.exports = DeadPhoenix;
+module.exports = GuardianKerbeusRedVerhaoyunshu669481031400816650;
