@@ -27,7 +27,7 @@ const RagingCrimsonHellfire = new bcworkshop.Special("Raging Crimson Hellfire", 
 
 
 function BRRequirement(acted, victim, logger){
-     return acted.sp >= .5 && acted.move == "fight";
+     return acted.sp >= .2 && acted.move == "fight";
 }
 
 function BR(acted, victim, logger){
@@ -39,7 +39,7 @@ function BR(acted, victim, logger){
                acted.atk += (Math.round(victim.hp/100 * 5));
           break;
      }
-     acted.sp -= .5;
+     acted.sp -= .2;
 }
 
 const BurningResonance = new bcworkshop.Mode("Burning Resonance", BRRequirement, BR);
