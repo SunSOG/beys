@@ -42,7 +42,7 @@ function BR(acted, victim, logger){
      acted.sp -= .2;
 }
 
-const BurningResonance = new bcworkshop.Mode("Burning Resonance", BRRequirement, BR);
+const BurningResonance = new bcworkshop.Passive("Burning Resonance", BRRequirement, BR, 0);
 
 function FIFRequirements(acted, victim, logger){
       return acted.sp >= 3 && acted.bey.type == "Defense" && victim.move == "fight";
@@ -95,9 +95,9 @@ const DefenseMode = new bcworkshop.Mode("Defense Mode", DefenseRequirement, Defe
 const HellSalamander = new bcworkshop.Beyblade({name: "Hell Salamander", type: "Balance", imageLink: "https://i.imgur.com/5PgZtDe.png"})
 .attachSpecial(SwordRebellionHellSlash)
 .attachSpecial(RagingCrimsonHellfire)
+.attachPassive(BurningResonance)
 .attachPassive(ForgedInFire)
 .attachPassive(UntouchableFlame)
-.attachMode(BurningResonance)
 .attachMode(AttackMode)
 .attachMode(DefenseMode)
 .addProperty("SalamanderMode", "(Math.floor(Math.random() * 2))")
