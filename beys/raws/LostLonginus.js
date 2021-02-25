@@ -1,1 +1,53 @@
-const Beyblade=require("./Beyblade.js");class LostLonginus extends Beyblade{constructor(){super("Lost Longinus","Attack","https://images-ext-1.discordapp.net/external/SkyihHxg4MHJ_qWWMLPFNPYVV-Z1XnxCfqd0EQrXYXA/%3Fsize%3D128/https/cdn.discordapp.com/avatars/570115430786531340/e3ff8924f1d5d41c975907008f0059f2.png?width=100&height=100"),this.specials=[{name:"Lost Spiral",requires:function(t,e,s){return t.sp>=3},execute:function(t,e,s){e.hp-=50+.5*t.lvl,e.stability-=7+.03*t.lvl,s.add(`[${t.username}] Lost Longinus used **Lost Spiral**!`)}}],this.passives=[],this.TheFirstLeftSpin={active:void 0,requires:function(t,e,s){return!0},boost:function(t,e,s){if(e.bey.sd!==t.bey.sd){let s;s=t.atk>e.atk?t.atk-e.atk:e.atk-t.atk,t.atk+=s,t.atk>100&&(t.atk=100)}else t.atk+=t.atk/100*15}},this.FierceResonance={active:void 0,requires:function(t,e,s){return t.sp>=5&&t.hp<=t.maxhp/100*50&&e.hp<=e.maxhp/100*50},boost:function(t,e,s){t.stability+=20,t.hp+=t.maxhp/100*20,s.add(`[${t.username}] is getting serious! **Fierce Resonance** activated!`)}},this.sd=1,this.sdchangable=!1}}module.exports=LostLonginus;
+const bcworkshop = require("bcworkshop");
+
+function LostSpiralRequirement(acted, victim, logger){//Lost Spiral Requirement
+    return acted.sp >= 3
+}
+
+function LostSpiralEffect(acted, victim, logger){//Lost Spiral Effect
+    victim.hp -= (50 + .5 * acted.lvl);
+    victim.stability -= (7 + .03 * acted.lvl);
+    logger.add(`[${acted.username}] Lost Longinus used **Lost Spiral**!`);
+}
+
+const LostSpiral = new bcworkshop.Special("Lost Spiral", LostSpiralRequirement, LostSpiralEffect);
+
+
+function TheFirstLeftSpinRequirement(acted, victim, logger){//The First Left Spin Requirement
+    return true;
+}
+
+function TheFirstLeftSpinEffect(acted, victim, logger){//The First Left Spin Effect
+    if (victim.bey.sd !== acted.bey.sd){
+    let difference;
+    if(acted.atk > victim.atk) difference = acted.atk - victim.atk;
+    else difference = victim.atk - acted.atk;
+    acted.atk += difference;
+    if (acted.atk > 100) acted.atk = 100;} else {
+        acted.atk += (acted.atk/100 * 15);
+    }
+}
+
+const TheFirstLeftSpin = new bcworkshop.Mode("The First Left Spin", TheFirstLeftSpinRequirement, TheFirstLeftSpinEffect);
+
+
+function FierceResonanceRequirement(acted, victim, logger){//Fierce Resonance Requirement
+    return acted.sp >= 5 && acted.hp <= (acted.maxhp/100 * 50) && victim.hp <= (victim.maxhp/100 * 50);
+}
+
+function FierceResonanceEffect(acted, victim, logger){//Fierce Resonance Effect
+    acted.stability += 20
+    acted.hp += (acted.maxhp/100 * 20)
+    logger.add(`[${acted.username}] is getting serious! **Fierce Resonance** activated!`);
+}
+
+const FierceResonance = new bcworkshop.Mode("Fierce Resonance", FierceResonanceRequirement, FierceResonanceEffect);
+
+
+const LostLonginus = new bcworkshop.Beyblade({name: "Lost Longinus", type: "Attack", imagelink: "https://images-ext-1.discordapp.net/external/lNoNpspS9g1nzJBxP5lZccImhXU188m7w-KyTsydan4/%3Fcb%3D20200218033300/https/vignette.wikia.nocookie.net/beyblade/images/3/38/Beyblade_Longinus.png/revision/latest", aliases: "Lost Luinor"})
+.attachMode(TheFirstLeftSpin)
+.attachMode(FierceResonance)
+.attachSpecial(LostSpiral)
+.setDefaultSD("Left");
+
+module.exports = LostLonginus;
