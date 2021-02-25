@@ -1,11 +1,11 @@
 const bcworkshop = new require("bcworkshop");
 
-const passive = new bcworkshop.Passive("Passive", function check(acted, victim, message, player){
+const passive = new bcworkshop.Passive("Passive", function check(acted, victim, message){
     let bool;
     if (acted.stamina <= Math.round((acted.maxstamina/100)*70) && acted.hp > Math.round((acted.maxhp/100)*80)) bool = true;
     else bool = false;
     return bool;
-  }, function passed(acted, victim, message, player){
+  }, function passed(acted, victim, message){
     victim.hp = victim.hp - (acted.atk * 2)
     let embed = new Discord.MessageEmbed()
   .setTitle(`[${acted.username}] Black God Valkyrie activated **God Reboot**.`)
@@ -14,7 +14,7 @@ const passive = new bcworkshop.Passive("Passive", function check(acted, victim, 
     message.channel.createMessage({embed:embed});
   }, 180);
 
-const special = new bcworkshop.Special("Special", function req(acted, victim, logger){return acted.sp > 3}, function special(acted, victim, message, player){
+const special = new bcworkshop.Special("Special", function req(acted, victim, logger){return acted.sp > 3}, function special(acted, victim, message){
     
 	
 	 let before = victim.hp;

@@ -1,11 +1,11 @@
 const bcworkshop = new require("bcworkshop");
 
-const passive = new bcworkshop.Passive("Passive", function check(acted, victim, message, player){
+const passive = new bcworkshop.Passive("Passive", function check(acted, victim, message){
     let bool;
     if (acted.hp > Math.round((acted.maxhp/100)*50) && acted.stamina >= 6) bool = true;
     else bool = false;
     return bool;
-  }, function passed(acted, victim, message, player){
+  }, function passed(acted, victim, message){
 	  acted.stamina = acted.stamina + 2;
     victim.atk = Math.round((victim.atk/100)*75);
     let embed = new Discord.MessageEmbed()
@@ -15,7 +15,7 @@ const passive = new bcworkshop.Passive("Passive", function check(acted, victim, 
     message.channel.createMessage({embed:embed});
   }, 180);
 
-const special = new bcworkshop.Special("Special", function req(acted, victim, logger){return acted.sp > 3}, function special(acted, victim, message, player){
+const special = new bcworkshop.Special("Special", function req(acted, victim, logger){return acted.sp > 3}, function special(acted, victim, message){
     
     
    let before = victim.hp;
