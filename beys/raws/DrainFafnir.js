@@ -1,7 +1,7 @@
 const bcworkshop = require("bcworkshop");
 
 function DrainSpinRequirements(acted, victim, logger){//Drain Spin Requirements
-     return acted.stamina < victim.stamina && acted.sp >= .5 && acted.sp <= 2.5 && victim.move == fight
+     return acted.stamina < victim.stamina && acted.sp >= .5 && acted.sp <= 2.5 && victim.move == "Fight"
 }
 
 function DrainSpinEffects(acted, victim, logger){//Drain Spin Effects
@@ -12,7 +12,7 @@ function DrainSpinEffects(acted, victim, logger){//Drain Spin Effects
      acted.sp -= .5;
 }
 
-const DrainSpin = new bcworkshop.Mode("Drain Spin", DrainSpinRequirements, DrainSpinEffects)
+const DrainSpin = new bcworkshop.Mode("Drain Spin", DrainSpinRequirements, DrainSpinEffects);
 
 
 function NothingBreakRequirements(acted, victim, logger){//Nothing Break Requirements
@@ -26,7 +26,7 @@ function NothingBreakEffects(acted, victim, logger){//Nothing Break Effects
      logger.add(`[${acted.username}] Drain Fafnir used **Nothing Break**!`);
 }
 
-const NothingBreak = new bcworkshop.Passive("Nothing Break", NothingBreakRequirements, NothingBreakEffects, 150)
+const NothingBreak = new bcworkshop.Passive("Nothing Break", NothingBreakRequirements, NothingBreakEffects, 130);
 
 
 function FullPowerResonanceRequirements(acted, victim, logger){//Full Power Resonance Requirements
@@ -38,11 +38,11 @@ function FullPowerResonanceEffects(acted, victim, logger){//Full Power Resonance
      acted.sp -= .5;
 }
 
-const FullPowerResonance = new bcworkshop.Mode("Full Power Resonance", FullPowerResonanceRequirements, FullPowerResonanceEffects)
+const FullPowerResonance = new bcworkshop.Mode("Full Power Resonance", FullPowerResonanceRequirements, FullPowerResonanceEffects);
 
 
 function TrueDrainSpinRequirements(acted, victim, logger){//True Drain Spin Requirements
-     return acted.stamina < victim.stamina && acted.sp >= 3 && victim.move == fight
+     return acted.stamina < victim.stamina && acted.sp >= 3 && victim.move == "Fight"
 }
 
 function TrueDrainSpinEffects(acted, victim, logger){//True Drain Spin Effects
@@ -53,7 +53,7 @@ function TrueDrainSpinEffects(acted, victim, logger){//True Drain Spin Effects
      acted.sp -= .5;
 }
 
-const TrueDrainSpin = new bcworkshop.Mode("True Drain Spin", TrueDrainSpinRequirements, TrueDrainSpinEffects)
+const TrueDrainSpin = new bcworkshop.Mode("True Drain Spin", TrueDrainSpinRequirements, TrueDrainSpinEffects);
 
 
 const DrainFafnir = new bcworkshop.Beyblade({name: "Drain Fafnir", type: "Stamina", imageLink: "https://static.wikia.nocookie.net/beyblade/images/2/21/Beyblade_Drain_Fafnir.png/revision/latest?cb=20180716233052"})

@@ -30,7 +30,7 @@ const RagingCrimsonHellfire = new bcworkshop.Special("Raging Crimson Hellfire", 
 
 
 function BRRequirement(acted, victim, logger){
-     return acted.sp >= .2 && acted.move == "fight";
+     return acted.sp >= .2 && acted.move == "Fight";
 }
 
 function BR(acted, victim, logger){
@@ -48,7 +48,7 @@ function BR(acted, victim, logger){
 const BurningResonance = new bcworkshop.Mode("Burning Resonance", BRRequirement, BR);
 
 function FIFRequirements(acted, victim, logger){
-      return acted.sp >= 3 && acted.bey.type == "Defense" && victim.move == "fight";
+      return acted.sp >= 3 && acted.bey.type == "Defense" && victim.move == "Fight";
 }
 
 function FIF(acted, victim, logger){
@@ -63,7 +63,7 @@ const ForgedInFire = new bcworkshop.Passive("Forged In Fire", FIFRequirements, F
 
 
 function UTRequirements(acted, victim, logger){
-      return acted.sp >= 3 && acted.bey.type == "Attack" && victim.move == "fight";
+      return acted.sp >= 3 && acted.bey.type == "Attack" && victim.move == "Fight";
 }
 
 function UT(acted, victim, logger){
