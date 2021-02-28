@@ -26,6 +26,7 @@ function ccreq(acted, victim, logger){
 }
 
 function ccuse(acted, victim, logger){
+    acted.sp -= 1;
     logger.add(`[${acted.username}] Venom Diabolos used **Bullet Cannon**!`);
     victim.hp -= Math.round(acted.atk+6);
     victim.stability -= 2;
@@ -38,6 +39,7 @@ function slreq(acted, victim, logger){
 }
 
 function sluse(acted, victim, logger){
+    acted.sp -= 4;
     victim.hp -= (30+(Math.round((acted.lvl-1)*0.9)));
     victim.stability -= 5;
     acted.stability -= 3;
@@ -51,6 +53,7 @@ function screq(acted, victim, logger){
 }
 
 function scuse(acted, victim, logger){
+    acted.sp -= 5;
     victim.hp = 0;
     victim.stamina = 0;
     victim.stability = 0;
@@ -64,6 +67,7 @@ function bireq(acted, victim, logger){
 }
 
 function biuse(acted, victim, logger){
+    acted.sp -= 3;
     victim.hp -= (28+Math.round((acted.lvl-1)*0.32))
     victim.stability -= 10;
 }

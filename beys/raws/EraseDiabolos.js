@@ -26,6 +26,7 @@ function ccreq(acted, victim, logger){
 }
 
 function ccuse(acted, victim, logger){
+    acted.sp -= 1;
     logger.add(`[${acted.username}] Erase Diabolos used **Bullet Cannon**!`);
     victim.hp -= Math.round(acted.atk+6);
     victim.stability -= 2;
@@ -38,6 +39,7 @@ function slreq(acted, victim, logger){
 }
 
 function sluse(acted, victim, logger){
+    acted.sp -= 4;
     victim.hp -= (30+(Math.round((acted.lvl-1)*0.4)));
     victim.stability -= 8;
     acted.stability -= 3;
@@ -64,6 +66,7 @@ function bireq(acted, victim, logger){
 }
 
 function biuse(acted, victim, logger){
+    acted.sp -= 3;
     victim.hp -= (28+Math.round((acted.lvl-1)*0.28))
     victim.stability -= 15;
 }

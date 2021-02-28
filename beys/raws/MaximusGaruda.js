@@ -94,4 +94,3 @@ const example = new bcworkshop.Beyblade({
 .setDefaultSD("Right");
 module.exports = example;
 
-// gg this was made by Cryocial
