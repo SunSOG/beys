@@ -27,7 +27,7 @@ const special = new bcworkshop.Special("Special", function req(acted, victim, lo
     message.channel.send(embed);
   });
 
-const LightningLDrago = new bcworkshop.Beyblade({name: "Lightning L-Drago", type: "Attack", imageLink: "https://i.pinimg.com/originals/69/db/de/69dbde935a7b22cb019800b98d2775b0.jpg"})
+const LightningLDrago = new bcworkshop.Beyblade({name: "Lightning L-Drago", type: "Attack", imageLink: "https://media.discordapp.net/attachments/736042245442109441/815494544003039252/image2.png"})
 .attachPassive(passive)
 .attachSpecial(special)
 .setDefaultSD("RIGHT")

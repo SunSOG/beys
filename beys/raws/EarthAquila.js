@@ -27,7 +27,7 @@ const special = new bcworkshop.Special("Special", function req(acted, victim, lo
     message.channel.send(embed);
   });
 
-const EarthAquila = new bcworkshop.Beyblade({name: "Earth Aquila", type: "Stamina", imageLink: "https://i.imgur.com/dHoVP0C.jpg"})
+const EarthAquila = new bcworkshop.Beyblade({name: "Earth Aquila", type: "Stamina", imageLink: "https://media.discordapp.net/attachments/736042245442109441/815494544316694578/image3.png"})
 .attachPassive(passive)
 .attachSpecial(special)
 .setDefaultSD("RIGHT")

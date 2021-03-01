@@ -27,7 +27,7 @@ const special = new bcworkshop.Special("Special", function req(acted, victim, lo
     message.channel.send(embed);
   });
 
-const FlameSagittario = new bcworkshop.Beyblade({name: "Flame Sagittario", type: "Stamina", imageLink: "https://cdn.discordapp.com/attachments/697626728243265546/742291621818925188/image0.png"})
+const FlameSagittario = new bcworkshop.Beyblade({name: "Flame Sagittario", type: "Stamina", imageLink: "https://media.discordapp.net/attachments/697626728243265546/742291621818925188/image0.png?width=586&height=586"})
 .attachPassive(passive)
 .attachSpecial(special)
 .setDefaultSD("RIGHT")

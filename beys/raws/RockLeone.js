@@ -28,7 +28,7 @@ const special = new bcworkshop.Special("Special", function req(acted, victim, lo
     message.channel.send(embed);
   });
 
-const RockLeone = new bcworkshop.Beyblade({name: "Rock Leone", type: "Defense", imageLink: "https://vignette.wikia.nocookie.net/beyblade/images/0/03/RL.0.M.jpg/revision/latest?cb=20190920212035"})
+const RockLeone = new bcworkshop.Beyblade({name: "Rock Leone", type: "Defense", imageLink: "https://media.discordapp.net/attachments/736042245442109441/815494543445065788/image0.png"})
 .attachPassive(passive)
 .attachSpecial(special)
 .setDefaultSD("RIGHT")
