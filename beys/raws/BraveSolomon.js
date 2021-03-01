@@ -67,16 +67,16 @@ function SWar(acted, victim, logger){
 }
 const ScriptsOfW = new bcworkshop.Mode("Scripts Of War", ReqSWar, SWar);
 
-function swdropreq(acted,victim,logger){
-    return !!acted.bey.ScriptsOfW.active;
+function swdropreq(a,b,c){
+    return !!a.bey.ScriptsOfWar.active;
 }
 
-function swdrop(acted,victim,logger){
-    acted.sp-=1;
-    if(acted.sp<=0)acted.bey.ScriptsOfW.active=false;
+function swdrop(a,b,c){
+    a.sp-=1;
+    if(a.sp<=0)a.bey.ScriptsOfWar.active=false;
 }
 
-const SWDrop = new bcworkshop.Passive("Scripts of War Drop", swdropreq, swdrop);
+const SWDrop = new bcworkshop.Passive("SoW Drop", swdropreq, swdrop);
 
 const BraveSolomon = new bcworkshop.Beyblade({name:"Brave Solomon", type: "Attack", imageLink:"https://i.ibb.co/m6gWwM6/solomon.png"})
 
