@@ -1,30 +1,80 @@
-const bcworkshop = new require("bcworkshop");
+const bcworkshop = require("bcworkshop");
+const { MessageEmbed } = require("discord.js");
+//----------------------------------------------------------------------------------------------------------------
+function SACheck(acted, victim, logger){
+    return acted.sp >= 3;
+}
 
-const passive = new bcworkshop.Passive("Passive", function check(acted, victim, message){
-    return false;
-  }, function passed(acted, victim, message){
-    victim.hp = victim.hp - 28;
-    let embed = new Discord.MessageEmbed()
-    .setTitle(`Uh oh, [${acted.username}] ${acted.bey.bbname || acted.bey.name} tried to use it's passive ability but it was not set up properly. 28 damage dealt.`)
-    .setDescription("Please report this at the support server.")
-    .setColor("#551a8b");
-    message.channel.createMessage({embed: embed});
-  }, 180);
+function SAExecute(acted, victim, logger){
+    let effect1 = 10 + 0.2 * acted.lvl;
+    let effect2 = 1 + 0.01 * acted.lvl;
+    victim.stability -= effect1;
+    victim.stamina -= effect2;
+    logger.add(`[${acted.username}] Wizard Fafnir used **Wizard Blow**!`);
+}
 
-const special = new bcworkshop.Special("Special", function req(acted, victim, logger){return acted.sp > 3}, function special(acted, victim, message){
-    
-    let embed = new Discord.MessageEmbed()
-    .setTitle(`[${acted.username}] Wizard Fafnir used **Spin Steal**. 1 stamina stolen from the opponent..`)
-    .setColor("#551a8b");
-    victim.stamina = victim.stamina -1;
-    acted.stamina = acted.stamina + 1;
-    message.channel.send(embed);
-  });
+const WizardBlow = new bcworkshop.Special("Wizard Blow", SACheck, SAExecute);
+//----------------------------------------------------------------------------------------------------------------
+function PassiveCheck1(acted, victim, logger){
+    return Math.floor(Math.random() * 2) == 0 && victim.bey.sd == 0;
+}
 
-const WizardFafnir = new bcworkshop.Beyblade({name: "Wizard Fafnir", type: "Stamina", imageLink: "https://vignette.wikia.nocookie.net/beyblade/images/1/1d/BBGT_Wizard_Fafnir_Ratchet_Rise_Sen_Beyblade.png/revision/latest?cb=20190419113639"})
-.attachPassive(passive)
-.attachSpecial(special)
-.setDefaultSD("RIGHT")
-.setSDChangable(false);
+function PassiveEXE1(acted, victim, logger){
+    victim.atk = Math.round((victim.atk/100)*60); 
+    victim.hp = victim.hp - Math.round((victim.atk/100)*60);
+    logger.add(`[${acted.username}] Wizard Fafnir used **Ratchet Through**!`);
 
-module.exports = WizardFafnir;
+}
+const RatchetThrough = new bcworkshop.Passive("Ratchet Through", PassiveCheck1, PassiveEXE1, 15);
+//----------------------------------------------------------------------------------------------------------------
+function PassiveCheck2(acted, victim, logger){
+    return (Math.random() * 2) == 0 && victim.move == "fight" && victim.bey.sd == 0 && acted.hp < Math.floor((acted.maxhp/100)*25);
+}
+
+function PassiveEXE2(acted, victim, logger){
+    victim.stamina -= 0.5 + 0.01 * acted.lvl; 
+    acted.stamina += 1 + 0.01 * acted.lvl;
+    logger.add(`[${acted.username}] Wizard Fafnir used **Ratchet Drain**!`);
+
+}
+const RatchetDrain = new bcworkshop.Passive("Ratchet Drain", PassiveCheck2, PassiveEXE2, 5);
+//----------------------------------------------------------------------------------------------------------------
+function PassiveCheck3(acted, victim, logger){
+    return Math.floor(Math.random() * 2) == 0 && victim.move == "fight" && victim.bey.sd == 0 && acted.hp < Math.floor((acted.maxhp/100)*25);
+
+}
+
+function PassiveEXE3(acted, victim, logger){
+    victim.stamina -= 1 + 0.01 * acted.lvl; 
+    acted.stamina += 2 + 0.01 * acted.lvl;
+    logger.add(`[${acted.username}] Wizard Fafnir used **Wizard Drain**!`);
+
+}
+const WizardDrain = new bcworkshop.Passive("Wizard Drain", PassiveCheck3, PassiveEXE3, 15);
+//----------------------------------------------------------------------------------------------------------------
+function PassiveCheck4(acted, victim, logger){
+    return acted.stamina <= 2 && victim.move == "fight"
+
+}
+
+function PassiveEXE4(acted, victim, logger){
+    acted.stamina += 3 + 0.01 * acted.lvl;
+    logger.add(`[${acted.username}] Wizard Fafnir used **Wizard Zero**!`);
+
+}
+const WizardZero = new bcworkshop.Passive("Wizard Zero", PassiveCheck4, PassiveEXE4, 60);
+//----------------------------------------------------------------------------------------------------------------
+const example = new bcworkshop.Beyblade({
+    name: "Wizard Fafnir",
+    type: "Stamina",
+    imageLink: "https://cdn.discordapp.com/attachments/671569234891112482/800146361987104818/318.png"
+})
+
+.attachSpecial(WizardBlow)
+.attachPassive(RatchetThrough)
+.attachPassive(RatchetDrain)
+.attachPassive(WizardDrain)
+.attachPassive(WizardZero)
+.setDefaultSD("Left");
+module.exports = example;
+

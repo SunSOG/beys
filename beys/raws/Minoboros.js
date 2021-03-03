@@ -39,7 +39,7 @@ const special = new bcworkshop.Special("Special", function req(acted, victim, lo
     message.channel.createMessage({embed: embed});
   });
 
-const Minoboros = new bcworkshop.Beyblade({name: "Minoboros", type: "Attack", imageLink: "https://ibb.co/QJh7PZB"})
+const Minoboros = new bcworkshop.Beyblade({name: "Minoboros", type: "Attack", imageLink: "https://media.discordapp.net/attachments/736042245442109441/815454231830069288/image0.png"})
 .attachPassive(passive)
 .attachSpecial(special)
 .setDefaultSD("RIGHT")

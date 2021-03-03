@@ -1,10 +1,11 @@
 const bcworkshop = require("bcworkshop");
 
 function hsreq(acted, victim, logger){
-    return acted.sp > 3;
+    return acted.sp > 5;
 }
 
 function hsuse(acted, victim, logger){
+    acted.sp -= 5;
     victim.hp = Math.round(victim.hp/100*75);
     acted.stamina = acted.stamina - 1;
     logger.add(`[${acted.username}] Hallow Xcalibur used **Hallow Saber**.`);

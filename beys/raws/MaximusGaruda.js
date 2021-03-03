@@ -1,47 +1,96 @@
-const bcworkshop = new require("bcworkshop");
+const bcworkshop = require("bcworkshop");
+const { MessageEmbed } = require("discord.js");
+//----------------------------------------------------------------------------------------------------------------
+function SACheck(acted, victim, logger){
+    return acted.sp >= 3;
+}
 
-const passive = new bcworkshop.Passive("Passive", function check(acted, victim, message){
-    return false;
-  }, function passed(acted, victim, message){
-    victim.hp = victim.hp - 28;
-    let embed = new Discord.MessageEmbed()
-    .setTitle(`Uh oh, [${acted.username}] ${acted.bey.bbname || acted.bey.name} tried to use it's passive ability but it was not set up properly. 28 damage dealt.`)
-    .setDescription("Please report this at the support server.")
-    .setColor("#551a8b");
-    message.channel.createMessage({embed: embed});
-  }, 180);
+function SAExecute(acted, victim, logger){
+    acted.stability += 10 + 0.2 * acted.lvl;
+    acted.stamina += 2 + 0.01 * acted.lvl;
+    victim.hp -= 40 + 0.2 * acted.lvl;
+    logger.add(`[${acted.username}] Maximum Garuda used **Meteor Strike**!`);
+}
 
-const special = new bcworkshop.Special("Special", function req(acted, victim, logger){return acted.sp > 3}, function special(acted, victim, message){
-    
-	let before = victim.hp;
-    let base = 30;
-    let plus = 0;
-    for(var i = 0; i < acted.lvl; i++){
-       plus = plus + 0.3; 
-	   //+0.1 every level which means 1 more damage every 10 levels
-    }
-    let dmg = base + plus;
-    victim.hp = victim.hp - dmg;
-    let after = victim.hp;
-    let diff = before - after;
-    
-    //Change "victim.hp = victim.hp - 123" to "victim.hp = victim.hp - <damage number>. This and the line below can be removed if the special move does not deal any damage.
-	acted.stamina = acted.stamina + 3;
-    //For more options check the README.md
-    
-    //Make sure to change the "Name", "Special Name" and damage dealt below.
-    let embed = new Discord.MessageEmbed()
-    .setTitle(`[${acted.username}] Maximus Garuda used **Meteor Strike**.`)
-	.setDescription(`Garuda slammed into a stadium wall, the recoil sending it sky high. The blades in Garuda's layer along with on it's Flow disc, and it's Flugel driver allowing it to catch the wind and glide even higher to reposition itself before it came crashing back down atop it's opponent, dealing ${diff} damage while increasing it's own stamina by 3 with the wind flow.`)
-    .setColor("#551a8b");
-    
-    message.channel.createMessage({embed: embed});
-  });
+const MeteorStrike = new bcworkshop.Special("Meteor Strike", SACheck, SAExecute);
+//----------------------------------------------------------------------------------------------------------------
 
-const MaximusGaruda = new bcworkshop.Beyblade({name: "Maximus Garuda", type: "Stamina", imageLink: "https://vignette.wikia.nocookie.net/beyblade/images/7/7c/Beyblade_Garuda.png/revision/latest?cb=20180716235147"})
-.attachPassive(passive)
-.attachSpecial(special)
-.setDefaultSD("RIGHT")
-.setSDChangable(false);
+function FMCheck(acted, victim, logger){
+    return acted.move == spin
+}
 
-module.exports = MaximusGaruda;
+function FMexe(acted, victim, logger){
+    acted.bey.flightCharge += 1;
+}
+
+const FlightMeter = new bcworkshop.Passive("Flight Meter", FMCheck, FMexe)   //this is how to charge up energy fro bound flight
+
+//----------------------------------------------------------------------------------------------------------------
+function BoundFlightCheck(acted, victim, logger){
+    return acted.bey.flightCharge >= 5;
+}
+
+function BoundFlightExecute(acted, victim, logger){
+    acted.bey.flightCharge = 0;
+    setTimeout(() => {acted.bey.BoundFlight.active = false}, 10000);
+        ;
+        victim.atk = 0;
+        acted.stamina += 0.2;
+        logger.add(`[${acted.username}] Maximum Garuda is in the air.`);
+    
+}
+
+const BoundFlight = new bcworkshop.Mode("Bound Flight", BoundFlightCheck, BoundFlightExecute);
+//----------------------------------------------------------------------------------------------------------------
+function BoundDescentCheck(acted, victim, logger){
+    return !acted.bey.BoundFlight.active;
+}
+
+function BoundDescentExe(acted, victim, logger){
+    setTimeout(() => {acted.bey.BoundFlight.active = false}, 10000);
+        acted.stamina += 0.3
+        logger.add(`[${acted.username}] Maximum Garuda is in the stadium.`);
+}
+const BoundDescent = new bcworkshop.Passive("Bound Descent", BoundDescentCheck, BoundDescentExe) // this is bound flight's effects
+//----------------------------------------------------------------------------------------------------------------
+function DankResCheck(acted, victim, logger){
+    return acted.sp > 2;
+}
+
+function DankResEXE(acted, victim, logger){
+    victim.atk = Math.round((victim.atk/100)*50);
+}
+
+const DankRes = new bcworkshop.Passive("Bold Resonance", DankResCheck, DankResEXE)   //this is how to charge up energy fro bound flight
+
+//----------------------------------------------------------------------------------------------------------------
+
+function FluGuardCheck(acted, victim, logger){
+    return acted.hp >= Math.round((acted.maxhp/100)*90);
+}
+
+function FluGuardEXE(acted, victim, logger){
+    victim.atk = Math.round((victim.atk/100)*30);
+    acted.stamina += 0.2
+}
+
+const FluGuard = new bcworkshop.Passive("Flugel Guard", FluGuardCheck, FluGuardEXE)   //this is how to charge up energy fro bound flight
+
+//----------------------------------------------------------------------------------------------------------------
+
+const example = new bcworkshop.Beyblade({
+    name: "Maximum Garuda",
+    type: "Stamina",
+    imageLink: "https://images-ext-1.discordapp.net/external/L_26GiVjzUgtq-sUaUTLFd7Scuzi87_Mr-0zSfdbvSs/%3Fcb%3D20180716235147/https/vignette.wikia.nocookie.net/beyblade/images/7/7c/Beyblade_Garuda.png/revision/latest"
+})
+
+.addProperty("flightCharge", 0)
+.attachSpecial(MeteorStrike)
+.attachPassive(BoundDescent)
+.attachPassive(FlightMeter)
+.attachPassive(FluGuard)
+.attachPassive(DankRes)
+.attachMode(BoundFlight)
+.setDefaultSD("Right");
+module.exports = example;
+
