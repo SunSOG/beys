@@ -1,48 +1,55 @@
-const bcworkshop = new require("bcworkshop");
+const bcworkshop = require("bcworkshop");
 
-const passive = new bcworkshop.Passive("Passive", function check(acted, victim, message){
-    return false;
-  }, function passed(acted, victim, message){
-    victim.hp = victim.hp - 28;
-    let embed = new Discord.MessageEmbed()
-    .setTitle(`Uh oh, [${acted.username}] ${acted.bey.bbname || acted.bey.name} tried to use it's passive ability but it was not set up properly. 28 damage dealt.`)
-    .setDescription("Please report this at the support server.")
-    .setColor("#551a8b");
-    message.channel.createMessage({embed: embed});
-  }, 180);
+function LostSpiralRequirement(acted, victim, logger){//Lost Spiral Requirement
+    return acted.sp >= 3
+}
 
-const special = new bcworkshop.Special("Special", function req(acted, victim, logger){return acted.sp > 3}, function special(acted, victim, message){
-    
-	
-	 let before = victim.hp;
-    let base = 70;
-    let plus = 0;
-    for(var i = 0; i < acted.lvl; i++){
-       plus = plus + 0.5; 
-	   //+0.1 every level which means 1 more damage every 10 levels
+function LostSpiralEffect(acted, victim, logger){//Lost Spiral Effect
+    victim.hp -= (50 + .5 * acted.lvl);
+    victim.stability -= (7 + .03 * acted.lvl);
+    logger.add(`[${acted.username}] Lost Longinus used **Lost Spiral**!`);
+}
+
+const LostSpiral = new bcworkshop.Special("Lost Spiral", LostSpiralRequirement, LostSpiralEffect);
+
+
+function TheFirstLeftSpinRequirement(acted, victim, logger){//The First Left Spin Requirement
+    return true;
+}
+
+function TheFirstLeftSpinEffect(acted, victim, logger){//The First Left Spin Effect
+    if (victim.bey.sd !== acted.bey.sd){
+    let difference;
+    if(acted.atk > victim.atk) difference = acted.atk - victim.atk;
+    else difference = victim.atk - acted.atk;
+    acted.atk += difference;
+    if (acted.atk > 100) acted.atk = 100;}else{
+        acted.atk += (acted.atk/100 * 15);
     }
-    let dmg = base + plus;
-    victim.hp = victim.hp - dmg;
-    let after = victim.hp;
-    let diff = before - after;
-    
-    //Change "victim.hp = victim.hp - 123" to "victim.hp = victim.hp - <damage number>. This and the line below can be removed if the special move does not deal any damage.
-	acted.stamina = acted.stamina - 2;
-    //For more options check the README.md
-    
-    //Make sure to change the "Name", "Special Name" and damage dealt below.
-    let embed = new Discord.MessageEmbed()
-    .setTitle(`[${acted.username}] Lost Longinus used **Lost Spiral**.`)
-	.setDescription (`Longinus caught onto the tornado ridge of the stadium with it's Spiral tip, dropping stamina by 2 due to grinding, but gaining immense speed as it collides head-on into the opponent, dealing ${diff} damage!`)
-    .setColor("#551a8b");
-    
-    message.channel.createMessage({embed: embed});
-  });
+}
 
-const LostLonginus = new bcworkshop.Beyblade({name: "Lost Longinus", type: "Attack", imageLink: "https://vignette.wikia.nocookie.net/beyblade/images/3/38/Beyblade_Longinus.png/revision/latest?cb=20200218033300"})
-.attachPassive(passive)
-.attachSpecial(special)
-.setDefaultSD("RIGHT")
-.setSDChangable(false);
+const TheFirstLeftSpin = new bcworkshop.Mode("The First Left Spin", TheFirstLeftSpinRequirement, TheFirstLeftSpinEffect);
+
+
+function FierceResonanceRequirement(acted, victim, logger){//Fierce Resonance Requirement
+    return acted.sp >= 5 && acted.hp <= (acted.maxhp/100 * 50) && victim.hp <= (victim.maxhp/100 * 50) && !acted.bey.boostUsed;
+}
+
+function FierceResonanceEffect(acted, victim, logger){//Fierce Resonance Effect
+    acted.bey.boostUsed = true;
+    acted.stability += 20;
+    acted.hp += (acted.maxhp/100 * 20);
+    logger.add(`[${acted.username}] is getting serious! **Fierce Resonance** activated!`);
+}
+
+const FierceResonance = new bcworkshop.Passive("Fierce Resonance", FierceResonanceRequirement, FierceResonanceEffect);
+
+
+const LostLonginus = new bcworkshop.Beyblade({name: "Lost Longinus", type: "Attack", imagelink: "https://images-ext-1.discordapp.net/external/lNoNpspS9g1nzJBxP5lZccImhXU188m7w-KyTsydan4/%3Fcb%3D20200218033300/https/vignette.wikia.nocookie.net/beyblade/images/3/38/Beyblade_Longinus.png/revision/latest", aliases: "Lost Luinor"})
+.attachMode(TheFirstLeftSpin)
+.attachPassive(FierceResonance)
+.attachSpecial(LostSpiral)
+.addProperty("boostUsed", false)
+.setDefaultSD("Left");
 
 module.exports = LostLonginus;

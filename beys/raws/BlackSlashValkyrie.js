@@ -20,7 +20,7 @@ const special = new bcworkshop.Special("Special", function req(acted, victim, lo
     message.channel.send(embed);
   });
 
-const BlackSlashValkyrie = new bcworkshop.Beyblade({name: "Black Slash Valkyrie", type: "Attack", imageLink: "https://cdn.discordapp.com/attachments/490783690323001345/721682635058970624/SPOILER_blacksvalkyrie.png"})
+const BlackSlashValkyrie = new bcworkshop.Beyblade({name: "Black Slash Valkyrie", type: "Attack", imageLink: "https://media.discordapp.net/attachments/736042245442109441/815453719817879612/image0.png"})
 .attachPassive(passive)
 .attachSpecial(special)
 .setDefaultSD("RIGHT")

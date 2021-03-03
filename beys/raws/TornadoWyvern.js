@@ -2,10 +2,11 @@ const bcworkshop = new require("bcworkshop");
 
 const passive = new bcworkshop.Passive("Passive", function check(acted, victim, message){
     let bool;
-    if (acted.hp > Math.round((acted.maxhp/100)*50) && acted.stamina >= 6) bool = true;
+    if (acted.hp > Math.round((acted.maxhp/100)*50) && acted.stamina >= 6 && !acted.bey.passiveUsed) bool = true;
     else bool = false;
     return bool;
   }, function passed(acted, victim, message){
+    acted.bey.passiveUsed = true;
 	  acted.stamina = acted.stamina + 2;
     victim.atk = Math.round((victim.atk/100)*75);
     let embed = new Discord.MessageEmbed()
@@ -46,6 +47,7 @@ const TornadoWyvern = new bcworkshop.Beyblade({name: "Tornado Wyvern", type: "De
 .attachPassive(passive)
 .attachSpecial(special)
 .setDefaultSD("RIGHT")
+.addProperty("passiveUsed", false)
 .setSDChangable(false);
 
 module.exports = TornadoWyvern;
