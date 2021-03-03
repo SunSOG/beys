@@ -33,7 +33,7 @@ const TheFirstLeftSpin = new bcworkshop.Mode("The First Left Spin", TheFirstLeft
 
 
 function FierceResonanceRequirement(acted, victim, logger){//Fierce Resonance Requirement
-    return acted.sp >= 4 && acted.hp <= (acted.maxhp/100 * 50) && victim.hp <= (victim.maxhp/100 * 50) && !acted.bey.boostUsed;
+    return acted.sp >= 4 && acted.hp <= (acted.maxhp/100 * 30) && !acted.bey.boostUsed;
 }
 
 function FierceResonanceEffect(acted, victim, logger){//Fierce Resonance Effect
@@ -47,11 +47,27 @@ function FierceResonanceEffect(acted, victim, logger){//Fierce Resonance Effect
 const FierceResonance = new bcworkshop.Passive("Fierce Resonance", FierceResonanceRequirement, FierceResonanceEffect);
 
 
+function NightmareBoostRequirement(acted, victim, logger){//Nightmare Boost Requirement
+    return !acted.bey.NBUsed;
+}
+
+function NightmareBoostEffect(acted, victim, logger){//Nightmare Boost Effect
+    acted.stability += 25;
+    acted.stamina += 1.6;
+    acted.bey.NBUsed = true;
+    logger.add(`[${acted.username}] launched with **Nightmare Boost**!`)
+}
+
+const NightmareBoost = new bcworkshop.Passive("Nightmare Boost", NightmareBoostRequirement, NightmareBoostEffect);
+
+
 const LostLonginus = new bcworkshop.Beyblade({name: "Lost Longinus", type: "Attack", imagelink: "https://images-ext-1.discordapp.net/external/lNoNpspS9g1nzJBxP5lZccImhXU188m7w-KyTsydan4/%3Fcb%3D20200218033300/https/vignette.wikia.nocookie.net/beyblade/images/3/38/Beyblade_Longinus.png/revision/latest", aliases: "Lost Luinor"})
 .attachMode(TheFirstLeftSpin)
 .attachPassive(FierceResonance)
+.attachPassive(NightmareBoost)
 .attachSpecial(LostSpiral)
 .addProperty("boostUsed", false)
+.addProperty("NBUsed", false)
 .setDefaultSD("Left");
 
 module.exports = LostLonginus;
