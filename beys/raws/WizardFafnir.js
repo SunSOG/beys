@@ -6,8 +6,9 @@ function SACheck(acted, victim, logger){
 }
 
 function SAExecute(acted, victim, logger){
-    let effect1 = 10 + 0.2 * acted.lvl;
+    let effect1 = 10;
     let effect2 = 1 + 0.01 * acted.lvl;
+    acted.sp -= 3;
     victim.stability -= effect1;
     victim.stamina -= effect2;
     logger.add(`[${acted.username}] Wizard Fafnir used **Wizard Blow**!`);
