@@ -30,6 +30,7 @@ function rluse(acted, victim, logger){
             logger.add(`${acted.username} launched using **Rush Shoot**!`);
         }
         acted.atk = Math.round((acted.atk/100)*105);
+        acted.bey.logged = true;
     }
 }
 

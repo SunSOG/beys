@@ -9,6 +9,7 @@ function SRHS(acted, victim, logger){
      acted.stamina -= (1 + .008 * acted.lvl);
      acted.stability -= 20;
      victim.stability -= 25;
+     acted.sp -= 3;
      logger.add(`[${acted.username}] Hell Salamander used **Sword Rebellion Hell Slash**!`);
 }
 
@@ -23,6 +24,7 @@ function RCH(acted, victim, logger){
       acted.stamina = (1 + .018 * acted.lvl);
       acted.stability += 5;
       victim.atk = (victim.atk = (victim.atk/100 * (50 - .2 * acted.lvl)));
+      acted.sp -= 3;
       logger.add(`[${acted.username}] Hell Salamander used **Raging Crimson Hellfire**!`);
 }
 
@@ -54,7 +56,7 @@ function FIFRequirements(acted, victim, logger){
 function FIF(acted, victim, logger){
     if((Math.floor(Math.random() * 99) <= 9)){
          acted.hp += (victim.atk/100 * (120 + .3 * acted.lvl));
-         acted.sp = 0;
+         acted.sp -= 3;
          logger.add(`[${acted.username}] Hell Salamander activated **Forged in Fire**!`);
     }
 }
@@ -63,14 +65,14 @@ const ForgedInFire = new bcworkshop.Passive("Forged In Fire", FIFRequirements, F
 
 
 function UTRequirements(acted, victim, logger){
-      return acted.sp >= 3 && acted.bey.type == "Attack" && victim.move == "fight";
+      return acted.sp >= 4 && acted.bey.type == "Attack" && victim.move == "fight";
 }
 
 function UT(acted, victim, logger){
      if((Math.floor(Math.random() * 99) <= 29)){
           victim.atk -= (victim.atk = (victim.atk/100 * (30 - .3 * acted.lvl)));
           acted.stability -= 5;
-          acted.sp = 0;
+          acted.sp -= 4;
           logger.add(`[${acted.username}] Hell Salamander activated **Untouchable Flame**!`);
      }
 }
