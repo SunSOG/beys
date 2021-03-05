@@ -20,7 +20,7 @@ const special = new bcworkshop.Special("Special", function req(acted, victim, lo
     message.channel.send(embed);
   });
 
-const GuardianKerbeusRedVer = new bcworkshop.Beyblade({name: "Guardian Kerbeus Red Ver.", type: "Stamina", imageLink: "https://cdn.glitch.com/7f7cfead-eec3-467c-866a-948e538f87c9%2F7411BF2F-B805-4384-8E2C-5E7FAD650A73.jpeg?v=1579684506649"})
+const GuardianKerbeusRedVer = new bcworkshop.Beyblade({name: "Guardian Kerbeus Red Ver.", type: "Stamina", imageLink: "https://media.discordapp.net/attachments/736042245442109441/815431167191810089/image0.png"})
 .attachPassive(passive)
 .attachSpecial(special)
 .setDefaultSD("RIGHT")
