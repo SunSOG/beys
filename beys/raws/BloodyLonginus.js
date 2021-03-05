@@ -14,11 +14,11 @@ const DScream = new bcworkshop.Special("Dragon Scream", ReqScream, Scream);
 
 function ReqSquall(acted, victim, logger){
     //Requirements to use special, can 
-    return acted.sp >= 3 && acted.stability <= (20 + .1 * acted.lvl);
+    return acted.sp >= 3 && acted.stability <= (20 + 0.1 * acted.lvl);
 }
 function Squall(acted, victim, logger){
     victim.hp -= (60 + 0.6 * victim.lvl);
-    victim.stability -= (20 + 0.2 * victim.lvl);
+    victim.stability -= (5 + 0.2 * victim.lvl);
     //What will a special do
     logger.add(`[${acted.username}] Bloody Longinus used **Bloody Squall**!`);
 }
@@ -67,7 +67,7 @@ function ReqJoltR(acted, victim, logger){
 }
 function JoltR(acted, victim, logger){
     acted.atk += (0.5 + 0.02 * acted.lvl);
-    acted.stamina -= (0.5 - 0.02 * acted.lvl);
+    acted.stamina -= (0.2 - 0.02 * acted.lvl);
     logger.add(`[${acted.username}] Bloody Longinus is on mode **Jolt Rush**!`);
     //What will mode change do
 }

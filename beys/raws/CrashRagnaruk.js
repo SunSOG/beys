@@ -18,8 +18,8 @@ function ReqRStorm(acted, victim, logger){
     return acted.move == "spin" && acted.stamina >= Math.round((acted.maxstamina/100)*60);
 }
 function RStorm(acted, victim, logger){
-    acted.stamina -= (2 + 0.2 * acted.lvl);
-    victim.atk = Math.round((victim.atk/100)*40);
+    acted.stamina += (2 + 0.2 * acted.lvl);
+    victim.atk = Math.round((victim.atk/100)*20);
 //What will a passive do
 logger.add(`[${acted.username}] Crash Ragnaruk activated **Ragnaruk Storm**!`);
 }

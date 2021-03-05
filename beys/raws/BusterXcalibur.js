@@ -1,4 +1,5 @@
 const bcworkshop = require("bcworkshop");
+const {MessageEmbed} = require("discord.js");
 
 function ReqTripleS(acted, victim, logger){
     //Requirements to use special, can 
@@ -6,7 +7,7 @@ function ReqTripleS(acted, victim, logger){
 }
 function TripleS(acted, victim, logger){
     victim.hp -= (40 + 0.2 * victim.lvl);
-    victim.stability -= (20 + 0.2 * victim.lvl);
+    victim.stability -= (5 + 0.1 * victim.lvl);
     //What will a special do
 logger.add(`[${acted.username}] Buster Xcalibur used **Triple Saber**!`);
 }
@@ -18,7 +19,7 @@ function ReqPentaS(acted, victim, logger){
 }
 function PentaS(acted, victim, logger){
     victim.hp -= (60 + 0.6 * victim.lvl);
-    victim.stability -= (10 + 0.1 * victim.lvl);
+    victim.stability -= (0 + 0.1 * victim.lvl);
     //What will a special do
     logger.add(`[${acted.username}] Buster Xcalibur used **Penta Saber**!`);
 }
@@ -45,7 +46,6 @@ function ReqBMode(acted, victim, logger){
 function BMode(acted, victim, logger){
     setTimeout(() => {acted.bey.BusterM.active = false}, 20000);
     acted.atk += 0.8;
-    victim.atk += 0.2;
     acted.stamina -= 0.3;
     logger.add(`[${acted.username}] Buster Xcalibur is on mode **Buster Mode**!`);
     //What will mode change do
@@ -72,6 +72,5 @@ const BusterXcalibur = new bcworkshop.Beyblade({name:"Buster Xcalibur", type: "A
 .attachMode(BusterM)
 .attachMode(BalanceM)
 .setDefaultSD("Right");
-
 
 module.exports = BusterXcalibur;
