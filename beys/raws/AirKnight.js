@@ -19,8 +19,8 @@ function SPRequirement2(acted, victim, logger){
     return acted.sp >= 3 && acted.stamina <= Math.round((acted.maxstamina/100)*70);
 }
 function SP2(acted, victim, logger){
-    acted.stability -= (20 - .5 * acted.lvl);
-    acted.stamina += (2 + .01 * acted.lvl);
+    acted.stability -= (10 - 0.5 * acted.lvl);
+    acted.stamina += (2 + 0.1 * acted.lvl);
     victim.hp -= (40 + 0.2 * victim.lvl);
     //What will a special do
     logger.add(`[${acted.username}] Air Knight used **Air Tremor**!`);
@@ -34,7 +34,7 @@ function PsRequirement(acted, victim, logger){
 }
 function PsName(acted, victim, logger){
     victim.atk = 0;
-    acted.stamina += (3 + .01 * acted.lvl);
+    acted.stamina += (3 + 0.1 * acted.lvl);
 //What will a passive do
 logger.add(`[${acted.username}] Air Knight activated **Knight Flyer**!`);
 }
@@ -57,7 +57,8 @@ function ModeRequirement2(acted, victim, logger){
 function ModeChange2(acted, victim, logger){
     setTimeout(() => {acted.bey.AirZone.active = false}, 15000);
     victim.hp -= 0.5;
-    victim.stamina += 0.5;
+    victim.stamina += 0.1;
+    acted.stamina += 0.4;
     logger.add(`[${acted.username}] Air Knight is on mode **Knight Blow**!`);
     //What will mode change do
 }

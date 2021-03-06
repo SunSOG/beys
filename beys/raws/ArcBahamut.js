@@ -19,7 +19,7 @@ function FinalCrashRequirement(acted, victim, logger){//Final Crash Requirements
 function FinalCrashEffect(acted, victim, logger){//Final Crash Effects
      acted.hp += (acted.maxhp/100 * 10 + .15 * acted.lvl);
      victim.hp -= (victim.atk * 2);
-     acted.sp -= 1;
+     acted.sp -= 3;
      logger.add(`[${acted.username}] Arc Bahamut used **Final Crash**!`);
 }
 

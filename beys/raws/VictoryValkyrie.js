@@ -8,26 +8,31 @@ function rluse(acted, victim, logger){
     if(acted.lvl >= 25){
         if(!acted.bey.logged){
             logger.add(`${acted.username} launched using **Flash Shoot**!`);
+            acted.bey.logged = true;
         }
         acted.atk = Math.round((acted.atk/100)*110);
     }else if(acted.lvl >= 50){
         if(!acted.bey.logged){
             logger.add(`${acted.username} launched using **True Flash Shoot**!`);
+            acted.bey.logged = true;
         }
         acted.atk = Math.round((acted.atk/100)*115);
     }else if(acted.lvl >= 75){
         if(!acted.bey.logged){
             logger.add(`${acted.username} launched usin **True Flash Rush Shoot**!`);
+            acted.bey.logged = true;
         }
         acted.atk = Math.round((acted.atk/100)*120);
     }else if(acted.lvl == 100){
         if(!acted.bey.logged){
             logger.add(`${acted.username} launched using **Jet Shoot**!`);
+            acted.bey.logged = true;
         }
         acted.atk = Math.round((acted.atk/100)*130);
     }else{
         if(!acted.bey.logged){
             logger.add(`${acted.username} launched using **Rush Shoot**!`);
+            acted.bey.logged = true;
         }
         acted.atk = Math.round((acted.atk/100)*105);
     }

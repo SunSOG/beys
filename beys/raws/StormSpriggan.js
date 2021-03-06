@@ -22,7 +22,7 @@ function CounterBreakEffect(acted, victim, logger){//Counter Break Effect
     acted.sp -= 2;
 }
 
-const CounterBreak = new bcworkshop.Passive("Counter Break", CounterBreakRequirement, CounterBreakEffect, 60);
+const CounterBreak = new bcworkshop.Passive("Counter Break", CounterBreakRequirement, CounterBreakEffect, 80);
 
 
 function UpperLaunchRequirement(acted, victim, logger){//Upper Launch Requirement
@@ -34,6 +34,7 @@ function UpperLaunchEffect(acted, victim, logger){//Upper Launch Effect
     victim.hp -= (70 + .5 * acted.lvl);
     victim.stability -= 20;
     acted.stamina -= (1 + .004 * acted.lvl);
+    acted.sp -= 4;
     logger.add(`[${acted.username}] Storm Spriggan used **Upper Launch**!`);
 }
 
@@ -45,11 +46,11 @@ function DeterminationResonanceRequirement(acted, victim, logger){//Determinatio
 }
 
 function DeterminationResonanceEffect(acted, victim, logger){//Determination Resonance Effect
-    acted.hp += (acted.maxhp/100 * 20 + .1 * acted.lvl);
+    acted.hp += (acted.maxhp/100 * 10 + .1 * acted.lvl);
     logger.add(`[${acted.username}] is determined to win! **Determination Resonance** activated!`);
 }
 
-const DeterminationResonance = new bcworkshop.Passive("Determination Resonance", DeterminationResonanceRequirement, DeterminationResonanceEffect, 100);
+const DeterminationResonance = new bcworkshop.Passive("Determination Resonance", DeterminationResonanceRequirement, DeterminationResonanceEffect, 180);
 
 
 const StormSpriggan = new bcworkshop.Beyblade({name: "Storm Spriggan", type: "Balance", imageLink: "https://vignette.wikia.nocookie.net/beyblade/images/a/a7/Beyblade_Spriggan.png/revision/latest?cb=20181218235223", aliases: "Storm Spryzen"})

@@ -6,7 +6,7 @@ function ReqDImpulse(acted, victim, logger){
     return acted.sp >= 4 && acted.stamina <= Math.round((acted.maxhp/100)*70);
 }
 function DImpulse(acted, victim, logger){
-    victim.stability -= (40 + 0.3 * victim.lvl);
+    victim.stability -= (15 + 0.05 * victim.lvl);
     victim.hp -= (30 + 0.3 * victim.lvl);
     //What will a special do
 logger.add(`[${acted.username}] Dead Hades used **Dead Impulse**!`);
@@ -31,7 +31,7 @@ function ReqHexW(acted, victim, logger){
 function HexW(acted, victim, logger){
     victim.atk = Math.round((victim.atk/100)*40);
     acted.stamina += (2 + 0.01 * acted.lvl);
-    victim.stability -= (30 + 0.3 * victim.lvl);
+    victim.stability -= (10 + 0.05 * victim.lvl);
 //What will a passive do
 logger.add(`[${acted.username}] Dead Hades activated **Hex Wall**!`);
 }
@@ -44,8 +44,8 @@ function ReqDarkR(acted, victim, logger){
 function DarkR(acted, victim, logger){
     setTimeout(() => {acted.bey.DResonance.active = false}, 20000);
     acted.sp -= 1;
-    acted.atk += 0.4;
-    acted.stamina -= 0.6;
+    acted.atk += 0.6;
+    acted.stamina -= 0.2;
     logger.add(`[${acted.username}] Dead Hades is on mode **Dark Resonance**!`);
     //What will mode change do
 }
@@ -60,7 +60,7 @@ function DarkREX(acted, victim, logger){
     acted.sp = 0;
     victim.hp -= 0.6;
     acted.atk += (20 + 0.5 * acted.lvl);
-    acted.stamina -= (0.8 - 0.04 * acted.lvl);
+    acted.stamina -= (0.6 - 0.04 * acted.lvl);
     logger.add(`[${acted.username}] Dead Hades is on mode **Dark Resonance EX**!`);
     //What will mode change do
 }
