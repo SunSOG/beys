@@ -6,6 +6,7 @@ function ReqDImpulse(acted, victim, logger){
     return acted.sp >= 4 && acted.stamina <= Math.round((acted.maxhp/100)*70);
 }
 function DImpulse(acted, victim, logger){
+    acted.sp -= 4;
     victim.stability -= (15 + 0.05 * victim.lvl);
     victim.hp -= (30 + 0.3 * victim.lvl);
     //What will a special do
@@ -18,6 +19,7 @@ function ReqDGravity(acted, victim, logger){
     return acted.sp >= 4 && acted.stamina >= Math.round((acted.maxhp/100)*70);
 }
 function DGravity(acted, victim, logger){
+    acted.sp -= 4;
     victim.hp -= (40 + 0.6 * victim.lvl);
     //What will a special do
     logger.add(`[${acted.username}] Dead Hades used **Dead Gravity**!`);

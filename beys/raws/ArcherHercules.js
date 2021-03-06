@@ -7,6 +7,7 @@ function SPRequirement1(acted, victim, message, player, logger){
 }
 function SP1(acted, victim, message, player, logger){
     //What will a special do
+acted.sp -= 3;
 victim.hp -= (50 + 0.1 * player.lvl);
 acted.stamina += (2 + 0.2 * player.lvl);
 logger.add(`Archer Hercules used **Archer Strike**!`);
@@ -19,6 +20,7 @@ function SPRequirement2(acted, victim, message, player, logger){
 }
 function SP2(acted, victim, message, player, logger){
     //What will a special do
+    acted.sp -= 3;
     victim.stability -= (5 + 0.1 * player.lvl);
     victim.atk = Math.round((victim.atk/100)*20);
     logger.add(`Archer Hercules used **Herculean Barrier**!`);
