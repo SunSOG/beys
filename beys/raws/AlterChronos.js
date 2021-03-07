@@ -26,8 +26,10 @@ function StartingModeRequirement(acted, victim, logger){//StartingMode Requireme
 function StartingModeEffect(acted, victim, logger){//StartingMode Effect
     if (acted.bey.AlterMode == 0){
     acted.bey.type = "Attack";
+    logger.add(`${acted.username} launched Alter Chronos in **Attack** mode!`);
     }else{
              acted.bey.type = "Stamina";
+             logger.add(`${acted.username} launuched Alter Chronos in **Stamina** mode!`);
     }
 }
 
