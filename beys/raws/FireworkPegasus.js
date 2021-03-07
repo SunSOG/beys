@@ -10,7 +10,7 @@ function sause(acted, victim, logger){
     acted.sp -= 5;
 }
 
-const FireblastAttack = new bcworkshop.Special("Starblast Attack", sareq, sause);
+const FireblastAttack = new bcworkshop.Special("Fireblast Attack", sareq, sause);
 
 function gtreq(acted, victim, logger){
     return victim.hp < (victim.maxhp/100*30) && acted.sp >= 3;
