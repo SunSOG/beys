@@ -6,6 +6,7 @@ function ReqScream(acted, victim, logger){
     return acted.sp >= 3 && acted.stability >= (20 + .1 * acted.lvl);
 }
 function Scream(acted, victim, logger){
+    acted.sp -= 3;
     victim.hp -= (40 + 0.2 * victim.lvl);
     //What will a special do
 logger.add(`[${acted.username}] Bloody Longinus used **Dragon Scream**!`);
@@ -17,6 +18,7 @@ function ReqSquall(acted, victim, logger){
     return acted.sp >= 3 && acted.stability <= (20 + 0.1 * acted.lvl);
 }
 function Squall(acted, victim, logger){
+    acted.sp -= 3;
     victim.hp -= (60 + 0.6 * victim.lvl);
     victim.stability -= (5 + 0.2 * victim.lvl);
     //What will a special do

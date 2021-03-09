@@ -6,6 +6,7 @@ function ReqWSlide(acted, victim, logger){
     return acted.sp >= 3;
 }
 function WSlide(acted, victim, logger){
+    acted.sp -= 3;
     victim.hp -= (60 + 0.2 * acted.lvl);
     acted.stamina += (1 + 0.2 * acted.lvl);
     //What will a special do

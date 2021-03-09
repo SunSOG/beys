@@ -6,6 +6,7 @@ function ReqTripleS(acted, victim, logger){
     return acted.sp >= 4 && acted.hp >= Math.round((acted.maxhp/100)*40);
 }
 function TripleS(acted, victim, logger){
+    acted.sp -= 4;
     victim.hp -= (40 + 0.2 * victim.lvl);
     victim.stability -= (5 + 0.1 * victim.lvl);
     //What will a special do
@@ -18,6 +19,7 @@ function ReqPentaS(acted, victim, logger){
     return acted.sp >= 4 && acted.hp <= Math.round((acted.maxhp/100)*40);
 }
 function PentaS(acted, victim, logger){
+    acted.sp -= 4;
     victim.hp -= (60 + 0.6 * victim.lvl);
     victim.stability -= (0 + 0.1 * victim.lvl);
     //What will a special do
