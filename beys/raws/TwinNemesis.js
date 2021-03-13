@@ -41,7 +41,7 @@ function HOTCRequirement(acted, victim, logger){
 
 function HOTCEffect(acted, victim, logger){
     if (acted.bey.CurrentMode == true){
-        acted.atk += (acted.atk/100 * 110);
+        acted.atk = (acted.atk/100 * 110);
     }else{
         victim.stability -= 2;  
 
