@@ -1,5 +1,4 @@
 const bcworkshop = require("bcworkshop");
-const {MessageEmbed} = require("discord.js");
 
 function SPRequirement1(acted, victim, logger){
     //Requirements to use special, can 

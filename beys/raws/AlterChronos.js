@@ -1,5 +1,4 @@
 const bcworkshop = require("bcworkshop");
-const { MessageEmbed } = require("discord.js");
 
 function ModeChangeRequirement(acted, victim, logger){//ModeChange Requirement
     return acted.sp >= 1;
