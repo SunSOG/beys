@@ -7,7 +7,7 @@ function SACheck(acted, victim, logger){
 
 function SAExecute(acted, victim, logger){
     acted.sp -= 3;
-    victim.hp -= (victim.atk + acted.atk) * (1 + 0.05 * acted.level-1);
+    victim.hp -= (victim.atk + acted.atk) * (1 + 0.05 * acted.lvl-1);
     acted.hp = Math.round((acted.hp/100)*70);
     logger.add(`[${acted.username}] Stardust Pegasus used **Stardust Supernova**!`);
 }
@@ -21,7 +21,7 @@ function SA1Check(acted, victim, logger){
 function SA1Execute(acted, victim, logger){
     acted.bey.UnearthSpeed.active = true;
     acted.sp -= 5;
-    victim.hp -= (victim.atk + acted.atk) * (1 + 0.07 * acted.level-1);
+    victim.hp -= (victim.atk + acted.atk) * (1 + 0.07 * acted.lvl-1);
     acted.bey.UnearthSpeed.active = false;
     logger.add(`[${acted.username}] Stardust Pegasus used **Ultimate Stardust Supernova**!`);
 
@@ -60,8 +60,8 @@ function SlowTimeEXE(acted, victim, logger){
     }, 10000);
     acted.stamina += 2 + 0.01 * acted.lvl;
     victim.stamina += 2 + 0.01 * victim.lvl;
-    acted.hp += 50 + 1 * acted.level-1;
-    victim.hp += 50 + 1.5 * victim.level-1;
+    acted.hp += 50 + 1 * acted.lvl-1;
+    victim.hp += 50 + 1.5 * victim.lvl-1;
     victim.atk = 0;
     logger.add(`[${acted.username}] Stardust Pegasus slowed time!`);
 }

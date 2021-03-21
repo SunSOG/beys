@@ -17,6 +17,7 @@ function ReqKingsS(acted, victim, logger){
 function KingsS(acted, victim, logger){
     acted.bey.KSUSed = true;
     acted.sp += Math.round(3 + 0.2 * acted.lvl);
+    if(acted.sp < 0) acted.sp = 0;
     acted.hp += Math.round((acted.maxhp/100)*20);
     acted.stamina += Math.round(3 + 0.1 * acted.lvl);
     logger.add(`[${acted.username}] Brave Solomon used **Kings Sacrifice**!`);
@@ -28,6 +29,7 @@ function ReqGTemple(acted, victim, logger){
 }
 function GTemple(acted, victim, logger){
     acted.sp -= Math.round(1 - 0.05 * acted.lvl);
+    if(acted.sp < 0) acted.sp = 0;
     victim.atk = 0;
     victim.hp -= victim.atk;
     logger.add(`[${acted.username}] Brave Solomon activated **Golden Temple**!`);
@@ -40,10 +42,12 @@ function ReqLegendsP(acted, victim, logger){
 function LegendsP(acted, victim, logger){
     acted.sp += Math.round(2 - 0.1 * acted.lvl);
     victim.sp += Math.round(1 - 0.05 * victim.lvl);
+    if(acted.sp < 0) acted.sp = 0;
+    if(victim.sp < 0) victim.sp = 0;
     victim.stamina -= Math.round(1 - 0.1 * acted.lvl);
     logger.add(`[${acted.username}] Brave Solomon activated **Legends Prophecy**!`);
 }
-const LProfecy = new bcworkshop.Passive("Legends Profecy", ReqLegendsP, LegendsP, 240);
+const LProfecy = new bcworkshop.Passive("Legends Prophecy", ReqLegendsP, LegendsP, 240);
 
 function ReqSPeace(acted, victim, logger){
     return acted.sp <= 4 && acted.bey.ScriptsOfWar.active == false;  
