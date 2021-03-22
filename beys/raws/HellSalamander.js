@@ -102,7 +102,7 @@ function DefenseM(acted, victim, logger){
 const DefenseMode = new bcworkshop.Mode("Defense Mode", DefenseRequirement, DefenseM);
 
 
-const HellSalamander = new bcworkshop.Beyblade({name: "Hell Salamander", type: "Balance", imageLink: "https://i.imgur.com/5PgZtDe.png", aliases: "Heat Salamander"})
+const HellSalamander = new bcworkshop.Beyblade({name: "Hell Salamander", type: "Balance", imageLink: "https://i.imgur.com/5PgZtDe.png", aliases: ["Heat Salamander"]})
 .attachSpecial(SwordRebellionHellSlash)
 .attachSpecial(RagingCrimsonHellfire)
 .attachPassive(ForgedInFire)

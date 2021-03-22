@@ -83,7 +83,7 @@ function SmashHammerEffect(acted, victim, logger){
 const SmashHammer = new bcworkshop.Passive("Smash Hammer", SmashHammerRequirement, SmashHammerEffect, 90);
 
 
-const TwinNemesis = new bcworkshop.Beyblade({name: "Twin Nemesis", type: "Attack", imageLink: "https://static.wikia.nocookie.net/beyblade/images/2/21/Beyblade_Twin_Nemesis.png/revision/latest?cb=20180716232248", aliases: "Twin Noctemis"})
+const TwinNemesis = new bcworkshop.Beyblade({name: "Twin Nemesis", type: "Attack", imageLink: "https://static.wikia.nocookie.net/beyblade/images/2/21/Beyblade_Twin_Nemesis.png/revision/latest?cb=20180716232248", aliases: ["Twin Noctemis"]})
 .attachMode(StartingMode)
 .attachSpecial(ModeChange)
 .attachPassive(UpperCrash)

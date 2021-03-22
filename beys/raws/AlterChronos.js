@@ -93,7 +93,7 @@ function MoonsaultDiveEffect(acted, victim, logger){//Moonsault Dive Effect
 const MoonsaultDive = new bcworkshop.Passive("Moonsault Dive", MoonsaultDiveRequirement, MoonsaultDiveEffect, 120);
 
 
-const AlterChronos = new bcworkshop.Beyblade({name: "Alter Chronos", type: "Balance", imageLink: "https://i.imgur.com/IKOnbBH.png", aliases: "Alter Cognite"})
+const AlterChronos = new bcworkshop.Beyblade({name: "Alter Chronos", type: "Balance", imageLink: "https://i.imgur.com/IKOnbBH.png", aliases: ["Alter Cognite"]})
 .attachSpecial(ModeChange)
 .attachSpecial(SlideOnShoot)
 .attachSpecial(SlideOffShoot)

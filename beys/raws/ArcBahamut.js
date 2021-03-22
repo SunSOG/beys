@@ -40,7 +40,7 @@ function LoneWolfResonanceEffects(acted, victim, logger){//Lone Wolf Resonance E
 const LoneWolfResonance = new bcworkshop.Special("Lone Wolf's Resonance", LoneWolfResonanceRequirements, LoneWolfResonanceEffects);
 
 
-const ArcBahamut = new bcworkshop.Beyblade({name: "Arc Bahamut", type: "Defense", imageLink: "https://static.wikia.nocookie.net/beyblade/images/e/ea/Beyblade_Arc_Bahamut.png/revision/latest/scale-to-width-down/226?cb=20180717000037", aliases: "Arc Balkesh"})
+const ArcBahamut = new bcworkshop.Beyblade({name: "Arc Bahamut", type: "Defense", imageLink: "https://static.wikia.nocookie.net/beyblade/images/e/ea/Beyblade_Arc_Bahamut.png/revision/latest/scale-to-width-down/226?cb=20180717000037", aliases: ["Arc Balkesh"]})
 .attachSpecial(LoneWolfResonance)
 .attachPassive(FinalCrash)
 .attachMode(FinalGuard)

@@ -45,7 +45,7 @@ function FierceResonanceEffect(acted, victim, logger){//Fierce Resonance Effect
 const FierceResonance = new bcworkshop.Passive("Fierce Resonance", FierceResonanceRequirement, FierceResonanceEffect);
 
 
-const LostLonginus = new bcworkshop.Beyblade({name: "Lost Longinus", type: "Attack", imageLink: "https://static.wikia.nocookie.net/beyblade/images/3/38/Beyblade_Longinus.png/revision/latest/top-crop/width/450/height/450?cb=20200218033300", aliases: "Lost Luinor"})
+const LostLonginus = new bcworkshop.Beyblade({name: "Lost Longinus", type: "Attack", imageLink: "https://static.wikia.nocookie.net/beyblade/images/3/38/Beyblade_Longinus.png/revision/latest/top-crop/width/450/height/450?cb=20200218033300", aliases: ["Lost Luinor"]})
 .attachMode(TheFirstLeftSpin)
 .attachPassive(FierceResonance)
 .attachSpecial(LostSpiral)
