@@ -5,6 +5,7 @@ function SPRequirement1(acted, victim, logger){
     return acted.sp >= 3 && acted.stamina >= Math.round((acted.maxstamina/100)*70);
 }
 function SP1(acted, victim, logger){
+    acted.sp -= 3;
     acted.stamina += (2 + .01 * acted.lvl);
     victim.stamina += (1 + .005 * victim.lvl);
     victim.atk = Math.round((victim.atk/100)*20);
@@ -18,6 +19,7 @@ function SPRequirement2(acted, victim, logger){
     return acted.sp >= 3 && acted.stamina <= Math.round((acted.maxstamina/100)*70);
 }
 function SP2(acted, victim, logger){
+    acted.sp -= 3;
     acted.stability -= (10 - 0.5 * acted.lvl);
     acted.stamina += (2 + 0.1 * acted.lvl);
     victim.hp -= (40 + 0.2 * victim.lvl);
