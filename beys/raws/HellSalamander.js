@@ -86,6 +86,7 @@ function AttackRequirement(acted, victim, logger){
 
 function AttackM(acted, victim, logger){
      acted.bey.type = "Attack";
+     logger.add(`[${acted.username}] launched Hell Salamander in **Attack** mode!`);
 }
 
 const AttackMode = new bcworkshop.Mode("Attack Mode", AttackRequirement, AttackM);
@@ -97,6 +98,7 @@ function DefenseRequirement(acted, victim, logger){
 
 function DefenseM(acted, victim, logger){
      acted.bey.type = "Defense";
+     logger.add(`[${acted.username}] launched Hell Salamander in **Defense** mode!`);
 }
 
 const DefenseMode = new bcworkshop.Mode("Defense Mode", DefenseRequirement, DefenseM);
