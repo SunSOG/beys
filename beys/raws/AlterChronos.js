@@ -25,8 +25,10 @@ function StartingModeRequirement(acted, victim, logger){//StartingMode Requireme
 function StartingModeEffect(acted, victim, logger){//StartingMode Effect
     if (acted.bey.AlterMode == 0){
     acted.bey.type = "Attack";
+    logger.add(`${acted.username} launched Alter Chronos in **Attack** mode!`);
     }else{
              acted.bey.type = "Stamina";
+             logger.add(`${acted.username} launuched Alter Chronos in **Stamina** mode!`);
     }
 }
 
@@ -71,6 +73,7 @@ function SlideOffShootEffect(acted, victim, logger){//Slide-Off Shoot Effect
     victim.stability -= 7;
     acted.stamina += (1.2 + .008 * acted.lvl);
     acted.stability += 7;
+    acted.sp -= 3;
     logger.add(`${acted.username} Alter Chronos used **Slide-Off Shoot**!`);
 }
 
@@ -93,7 +96,7 @@ function MoonsaultDiveEffect(acted, victim, logger){//Moonsault Dive Effect
 const MoonsaultDive = new bcworkshop.Passive("Moonsault Dive", MoonsaultDiveRequirement, MoonsaultDiveEffect, 120);
 
 
-const AlterChronos = new bcworkshop.Beyblade({name: "Alter Chronos", type: "Balance", imageLink: "https://i.imgur.com/IKOnbBH.png", aliases: "Alter Cognite"})
+const AlterChronos = new bcworkshop.Beyblade({name: "Alter Chronos", type: "Balance", imageLink: "https://i.imgur.com/Li7JeJQ.png", aliases: "Alter Cognite"})
 .attachSpecial(ModeChange)
 .attachSpecial(SlideOnShoot)
 .attachSpecial(SlideOffShoot)

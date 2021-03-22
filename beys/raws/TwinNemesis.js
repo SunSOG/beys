@@ -31,7 +31,7 @@ function ModeChangeEffect(acted, victim, logger){//ModeChange Effect
         }
         acted.sp -= 1;
     }
-
+    
 const ModeChange = new bcworkshop.Special("Mode Change", ModeChangeRequirement, ModeChangeEffect);
 
 
@@ -41,7 +41,7 @@ function HOTCRequirement(acted, victim, logger){
 
 function HOTCEffect(acted, victim, logger){
     if (acted.bey.CurrentMode == true){
-        acted.atk += (acted.atk/100 * 110);
+        acted.atk = (acted.atk/100 * 110);
     }else{
         victim.stability -= 2;  
 
@@ -88,6 +88,7 @@ const TwinNemesis = new bcworkshop.Beyblade({name: "Twin Nemesis", type: "Attack
 .attachSpecial(ModeChange)
 .attachPassive(UpperCrash)
 .attachPassive(SmashHammer)
+.attachMode(HOTC)
 .addProperty("TwinMode", "(Math.floor(Math.random() * 2))")
 .addProperty("CurrentMode", false)
 .addProperty("ModeLock", false)
