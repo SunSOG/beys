@@ -41,7 +41,7 @@ function gcreq(acted, victim, logger){
 
 function gcuse(acted, victim, logger){
     acted.sp -= 3;
-    victim.hp -= (24+(acted.lvl*0.8));
+    victim.hp -= Math.round(24+(acted.lvl*1.15));
     acted.hp = acted.hp/100*95;
 }
 
