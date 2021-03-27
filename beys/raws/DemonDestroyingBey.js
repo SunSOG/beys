@@ -44,6 +44,7 @@ function WindFormEffect(acted, victim, logger){//WindForm Effect
           break;
      }
      acted.bey.Form = true;
+     acted.stability -= 15;
      victim.hp -= (50 + .4 * acted.lvl);
      if (acted.bey.sd == "Right"){
      logger.add(`[${acted.username}] Demon Destroying Bey used **Wind ${acted.bey.animal} Form: ${acted.bey.prefix} Storm**! Type changed to **${acted.bey.type}**!`);
@@ -71,6 +72,7 @@ function GaiaFormRequirement(acted, victim, logger){//GaiaForm Requirement
                 acted.bey.type = "Stamina";
            break;
       }
+      victim.stability -= 10;
       acted.bey.Form = true;
       victim.atk -= (victim.atk/100 * 30 + .5 * acted.lvl);
       if (acted.bey.sd == "Right"){
@@ -104,6 +106,7 @@ function FlameFormEffect(acted, victim, logger){//FlameForm Effect
      if (acted.stamina > 15) {
           acted.stamina = 15;
      }
+     acted.stability += 10;
      acted.bey.Form = true;
      if (acted.bey.sd == "Right"){
      logger.add(`[${acted.username}] Demon Destroying Bey used **Flame ${acted.bey.animal} Form: ${acted.bey.prefix} Inferno**! Type changed to **${acted.bey.type}**!`);
@@ -132,6 +135,7 @@ function WaterFormEffect(acted, victim, logger){//WaterForm Effect
           break;
      }
      acted.hp = (acted.hp * 2);
+     acted.stability += 20;
      acted.bey.Form = true;
      if (acted.bey.sd == "Right"){
      logger.add(`[${acted.username}] Demon Destroying Bey used **Aqua ${acted.bey.animal} Form: ${acted.bey.prefix} Tides**! Type changed to **${acted.bey.type}**!`);
@@ -167,7 +171,7 @@ function AnimalFormEffect(acted, victim, logger){
                acted.bey.animal = "Wolf";
                acted.bey.prefix = "Howling";
                acted.bey.suffix = "Fang";
-               victim.stamina -= (victim.stamina/100 * 25);
+               victim.stability -= 10;
           break;
           case 3:
                acted.bey.animal = "Phoenix";
