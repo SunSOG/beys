@@ -60,7 +60,7 @@ function tsuse(acted, victim, logger){
     setTimeout(() => {
         acted.bey.ZaWarudo.active = false;
         logger.add("**Time shall move again.**");
-    }, 5000);
+    }, 15000);
 }
 
 const TimeStop = new bcworkshop.Special("Time Stop", tsreq, tsuse);
