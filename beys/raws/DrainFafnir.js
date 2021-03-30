@@ -22,11 +22,11 @@ function NothingBreakRequirements(acted, victim, logger){//Nothing Break Require
 function NothingBreakEffects(acted, victim, logger){//Nothing Break Effects
      acted.stamina -= (acted.maxstamina/100 * 40);
      victim.hp -= (acted.atk * 0.03 * acted.lvl);
-     acted.sp = 0;
+     acted.sp -= 3;
      logger.add(`[${acted.username}] Drain Fafnir used **Nothing Break**!`);
 }
 
-const NothingBreak = new bcworkshop.Passive("Nothing Break", NothingBreakRequirements, NothingBreakEffects, 130);
+const NothingBreak = new bcworkshop.Passive("Nothing Break", NothingBreakRequirements, NothingBreakEffects, 40);
 
 
 function FullPowerResonanceRequirements(acted, victim, logger){//Full Power Resonance Requirements
