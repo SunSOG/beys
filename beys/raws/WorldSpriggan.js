@@ -50,7 +50,7 @@ function cbuse(acted, victim, logger){
 
 const CounterBreak = new bcworkshop.Special("Counter Break", cbreq, cbuse);
 
-const WorldSpriggan = new bcworkshop.Beyblade({name: "World Spriggan", type: "Balance", imageLink: "https://media.discordapp.net/attachments/756736605380935681/826084335492399146/BBSK_World_Spriggan_Unite27_2B_Beyblade.png"})
+const WorldSpriggan = new bcworkshop.Beyblade({name: "World Spriggan", type: "Balance", imageLink: "https://media.discordapp.net/attachments/806516347621867560/826232278325788672/image0.png"})
 .addProperty("WSUsed", false)
 .attachMode(WorldSpin)
 .attachPassive(WorldSpinPassive)
