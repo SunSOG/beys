@@ -45,6 +45,7 @@ function cbreq(acted, victim, logger){
 function cbuse(acted, victim, logger){
     acted.sp -= 4;
     victim.hp -= Math.round(26+(1.1*(acted.lvl-1)));
+    victim.stamina -= 2;
 }
 
 const CounterBreak = new bcworkshop.Special("Counter Break", cbreq, cbuse);
@@ -70,6 +71,7 @@ function zwreq(acted, victim, logger){
 
 function zwuse(acted, victim, logger){
     return true;
+    // Think it does nothing? Well NO, it doubles your attack, your spin and your energy charge. How does it work? You don't need to know.
 }
 
 const ZaWarudo = new bcworkshop.Mode("Za Warudo", zwreq, zwuse);

@@ -39,12 +39,13 @@ function suse(acted, victim, logger){
 const WorldSlash = new bcworkshop.Special("World Slash", sreq, suse);
 
 function cbreq(acted, victim, logger){
-    return acted.sp >= 5;
+    return acted.sp >= 4;
 }
 
 function cbuse(acted, victim, logger){
-    acted.sp -= 5;
+    acted.sp -= 4;
     victim.hp -= Math.round(25+(1.1*(acted.lvl-1)));
+    victim.stamina -= 2;
 }
 
 const CounterBreak = new bcworkshop.Special("Counter Break", cbreq, cbuse);
