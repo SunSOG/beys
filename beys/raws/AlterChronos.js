@@ -47,7 +47,7 @@ function TightropeDiveEffect(acted, victim, logger){//Tightrope Dive Effect
     logger.add(`${acted.username} Alter Chronos used **Tightrope Dive**!`);
 }
 
-const TightropeDive = new bcworkshop.Passive("Tightrope Dive", TightropeDiveRequirement, TightropeDiveEffect, 120);
+const TightropeDive = new bcworkshop.Passive("Tightrope Dive", TightropeDiveRequirement, TightropeDiveEffect, 70);
 
 
 function SlideOnShootRequirement(acted, victim, logger){//Slide-On Shoot Requirement
@@ -81,19 +81,19 @@ const SlideOffShoot = new bcworkshop.Special("Slide-Off Shoot", SlideOffShootReq
 
 
 function MoonsaultDiveRequirement(acted, victim, logger){//Moonsault Dive Requirement
-    return victim.move == "fight" && acted.sp >= 3;
+    return victim.move == "fight" && acted.sp >= 1;
 }
 
 function MoonsaultDiveEffect(acted, victim, logger){//Moonsault Dive Effect
     if((Math.floor(Math.random() * 99) <= 49)){
         victim.hp -= (50 + .7 * acted.lvl);
         acted.stability -= 25;
-        acted.sp -= 3;
+        acted.sp -= 1;
         logger.add(`[${acted.username}] Alter Chronos used **Moonsaught Dive**!`);
    }
 }
 
-const MoonsaultDive = new bcworkshop.Passive("Moonsault Dive", MoonsaultDiveRequirement, MoonsaultDiveEffect, 120);
+const MoonsaultDive = new bcworkshop.Passive("Moonsault Dive", MoonsaultDiveRequirement, MoonsaultDiveEffect, 60);
 
 
 const AlterChronos = new bcworkshop.Beyblade({name: "Alter Chronos", type: "Balance", imageLink: "https://i.imgur.com/Li7JeJQ.png", aliases: ["Alter Cognite"]})

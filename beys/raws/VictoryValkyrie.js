@@ -47,11 +47,11 @@ function breq(acted, victim, logger){
 function buse(acted, victim, logger){
     acted.bey.boostUsed = true;
     if(acted.lvl <= 50){
-        acted.stability += 5;
-        acted.stamina += 3;
+        acted.stability += 8;
+        acted.stamina += 4;
     }else{
-        acted.stability += 15;
-        acted.stamina += 5;
+        acted.stability += 18;
+        acted.stamina += 6;
     }
 }
 

@@ -1,11 +1,11 @@
 const bcworkshop = require("bcworkshop");
 
 function CounterBreakRequirement(acted, victim, logger){//Counter Break Requirement
-    return victim.move == "fight" && acted.sp >= 2
+    return victim.move == "fight" && acted.sp >= 3;
 }
 
 function CounterBreakEffect(acted, victim, logger){//Counter Break Effect
-    switch(acted.bey.TrueCounterChance){
+    switch(Math.floor(Math.random() * 2)){
          case 0:
               victim.hp -= (victim.atk/100 * (120 + .3 * acted.lvl));
               victim.atk -= (victim.atk/100 * (50 + .2 * acted.lvl));
@@ -13,27 +13,27 @@ function CounterBreakEffect(acted, victim, logger){//Counter Break Effect
               logger.add(`[${acted.username}] Storm Spriggan used **Counter Break**!`);
          break;
          case 1:
-             victim.hp -= (victim.atk/100 * (120 + .5 * acted.lvl));
+             victim.hp -= (victim.atk/100 * (120 + .6 * acted.lvl));
              victim.atk -= (victim.atk/100 * (30 + .4 * acted.lvl));
-             victim.stability -= 10;
+             victim.stability -= 20;
              logger.add(`[${acted.username}] Storm Spriggan used **True Counter Break**!`);
          break;
     }
-    acted.sp -= 2;
+    acted.sp -= 3;
 }
 
 const CounterBreak = new bcworkshop.Passive("Counter Break", CounterBreakRequirement, CounterBreakEffect, 80);
 
 
 function UpperLaunchRequirement(acted, victim, logger){//Upper Launch Requirement
-    return acted.sp >= 4
+    return acted.sp >= 4;
 }
 
 
 function UpperLaunchEffect(acted, victim, logger){//Upper Launch Effect
     victim.hp -= (70 + .5 * acted.lvl);
-    victim.stability -= 20;
-    acted.stamina -= (1 + .004 * acted.lvl);
+    victim.stability -= 22;
+    acted.stamina -= (1 + .006 * acted.lvl);
     acted.sp -= 4;
     logger.add(`[${acted.username}] Storm Spriggan used **Upper Launch**!`);
 }
@@ -42,11 +42,12 @@ const UpperLaunch = new bcworkshop.Special("Upper Launch", UpperLaunchRequiremen
 
 
 function DeterminationResonanceRequirement(acted, victim, logger){//Determination Resonance Requirement
-    return acted.hp <= (acted.maxhp/100 * 50)
+    return acted.hp <= (acted.maxhp/2);
 }
 
 function DeterminationResonanceEffect(acted, victim, logger){//Determination Resonance Effect
     acted.hp += (acted.maxhp/100 * 10 + .1 * acted.lvl);
+    acted.stability += 25;
     logger.add(`[${acted.username}] is determined to win! **Determination Resonance** activated!`);
 }
 
@@ -57,7 +58,6 @@ const StormSpriggan = new bcworkshop.Beyblade({name: "Storm Spriggan", type: "Ba
 .attachPassive(CounterBreak)
 .attachSpecial(UpperLaunch)
 .attachPassive(DeterminationResonance)
-.addProperty("TrueCounterChance", "(Math.floor(Math.random() * 2))")
 .setDefaultSD("Right");
 
 module.exports = StormSpriggan; 
