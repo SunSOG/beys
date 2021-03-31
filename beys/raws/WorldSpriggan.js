@@ -55,6 +55,7 @@ const WorldSpriggan = new bcworkshop.Beyblade({name: "World Spriggan", type: "Ba
 .attachMode(WorldSpin)
 .attachPassive(WorldSpinPassive)
 .attachSpecial(WorldSlash)
-.attachSpecial(CounterBreak);
+.attachSpecial(CounterBreak)
+.setSDChangable(true);
 
 module.exports = WorldSpriggan;
