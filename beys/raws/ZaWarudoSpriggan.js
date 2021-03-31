@@ -60,7 +60,7 @@ function tsuse(acted, victim, logger){
     setTimeout(() => {
         acted.bey.ZaWarudo.active = false;
         logger.add("**Time shall move again.**");
-    }, 15000);
+    }, 20000);
 }
 
 const TimeStop = new bcworkshop.Special("Time Stop", tsreq, tsuse);
@@ -83,6 +83,7 @@ const ZaWarudoSpriggan = new bcworkshop.Beyblade({name: "Za Warudo Spriggan", ty
 .attachSpecial(WorldSlash)
 .attachSpecial(CounterBreak)
 .attachSpecial(TimeStop)
-.attachMode(ZaWarudo);
+.attachMode(ZaWarudo)
+.setSDChangable(true);
 
 module.exports = ZaWarudoSpriggan;
