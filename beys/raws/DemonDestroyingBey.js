@@ -165,7 +165,6 @@ function AnimalFormEffect(acted, victim, logger){
                acted.bey.prefix = "Beastly";
                acted.bey.suffix = "Claw";
                acted.stamina += (victim.stamina/100 * 40);
-
           break;
           case 2:
                acted.bey.animal = "Wolf";
@@ -183,7 +182,7 @@ function AnimalFormEffect(acted, victim, logger){
      acted.bey.Form = false;
 }
 
-const AnimalForms = new bcworkshop.Passive("Animal Form", AnimalFormRequirement, AnimalFormEffect, 0);
+const AnimalForms = new bcworkshop.Mode("Animal Form", AnimalFormRequirement, AnimalFormEffect);
 
 
 const DemonDestroyingBey = new bcworkshop.Beyblade({name: "Demon Destroying Bey", type: "Balance", imageLink: "https://cdn.glitch.com/7f7cfead-eec3-467c-866a-948e538f87c9%2Fkimetsunobeiburedo.png?v=1581766665854"})
@@ -192,7 +191,7 @@ const DemonDestroyingBey = new bcworkshop.Beyblade({name: "Demon Destroying Bey"
 .attachSpecial(FlameForm)
 .attachSpecial(WaterForm)
 .attachMode(StartingMode)
-.attachPassive(AnimalForms) 
+.attachMode(AnimalForms) 
 .addProperty("Form", false)
 .addProperty("TypeLock", false)
 .addProperty("animal", false)

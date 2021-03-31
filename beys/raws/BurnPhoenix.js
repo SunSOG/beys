@@ -2,7 +2,7 @@ const bcworkshop = require("bcworkshop");
 const { MessageEmbed } = require("discord.js");
 
 function FrictionActiveRequirement(acted, victim, logger){//Friction Active Requirement
-     return acted.move == "fight" || acted.move == "spin" && acted.bey.Friction <= 40;
+     return acted.move == "fight" && acted.bey.Friction <= 40 || (acted.move == "spin" && acted.bey.Friction <= 40);
 }
 
 function FrictionActiveEffect(acted, victim, logger){//Friction Active Effect
