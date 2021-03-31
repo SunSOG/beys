@@ -19,7 +19,6 @@ function SA1Check(acted, victim, logger){
 }
 
 function SA1Execute(acted, victim, logger){
-    acted.bey.UnearthSpeed.active = true;
     acted.sp -= 5;
     victim.hp -= (victim.atk + acted.atk) * (1 + 0.07 * acted.lvl-1);
     acted.bey.UnearthSpeed.active = false;
@@ -42,14 +41,14 @@ function UnearthSpdEXE(acted, victim, logger){
     acted.stamina += 1 + 0.01 * acted.lvl;
     victim.atk = Math.round((victim.atk/100)*90);
     acted.atk = Math.round((victim.atk/100)*110);
-    logger.add(`[${acted.username}] Stardust Pegasus went into an **Unearth Speed**!`);
+    logger.add(`[${acted.username}] Stardust Pegasus went into an **Unearthly Speed**!`);
 }
 
 
 const UnearthSpeed = new bcworkshop.Mode("Unearth Speed", UnearthSpdCheck, UnearthSpdEXE);
 
 function SlowTimeCheck(acted, victim, logger){
-    return acted.hp < Math.round((acted.hp/100)*25) && !acted.bey.timeStopped;
+    return acted.hp < Math.round((acted.maxhp/100)*25) && !acted.bey.timeStopped;
 }
 
 function SlowTimeEXE(acted, victim, logger){
@@ -65,7 +64,7 @@ function SlowTimeEXE(acted, victim, logger){
     victim.atk = 0;
     logger.add(`[${acted.username}] Stardust Pegasus slowed time!`);
 }
-const SlowTime= new bcworkshop.Mode("Slow Time", SlowTimeCheck, SlowTimeEXE, 30);
+const SlowTime = new bcworkshop.Mode("Slow Time", SlowTimeCheck, SlowTimeEXE, 30);
 
 function sreq(a,b,c){
     return !0;

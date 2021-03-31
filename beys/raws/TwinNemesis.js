@@ -7,9 +7,11 @@ function StartingModeRequirement(acted, victim, logger){//StartingMode Requireme
 
 function StartingModeEffect(acted, victim, logger){//StartingMode Effect
     if (acted.bey.TwinMode == 0){
-        acted.bey.CurrentMode = true;
+        acted.bey.CurrentMode = "Upper";
+        logger.add(`[${acted.username}] Twin Nemesis launched in **Upper Mode**!`);
         }else{
-                 acted.bey.CurrentMode = false;
+                 acted.bey.CurrentMode = "Smash";
+                 logger.add(`[${acted.username}] Twin Nemesis launched in **Smash Mode**!`);
         }
         acted.bey.ModeLock = true;
     }
@@ -22,11 +24,11 @@ function ModeChangeRequirement(acted, victim, logger){//ModeChange Requirement
 }
 
 function ModeChangeEffect(acted, victim, logger){//ModeChange Effect
-    if (acted.bey.CurrentMode == true){
-    acted.bey.CurrentMode = false;
+    if (acted.bey.CurrentMode == "Smash"){
+    acted.bey.CurrentMode = "Upper";
     logger.add(`[${acted.username}] Twin Nemesis used **Mode Change**! Bey set to **Upper Mode**!`);   
     }else{
-            acted.bey.CurrentMode = true;
+            acted.bey.CurrentMode = "Smash";
             logger.add(`[${acted.username}] Twin Nemesis used **Mode Change**! Bey set to **Smash Mode**!`);
         }
         acted.sp -= 1;
@@ -36,11 +38,11 @@ const ModeChange = new bcworkshop.Special("Mode Change", ModeChangeRequirement, 
 
 
 function HOTCRequirement(acted, victim, logger){
-    return acted.move == "Attack";
+    return acted.move == "fight";
 }
 
 function HOTCEffect(acted, victim, logger){
-    if (acted.bey.CurrentMode == true){
+    if (acted.bey.CurrentMode == "Upper"){
         acted.atk = (acted.atk/100 * 110);
     }else{
         victim.stability -= 2;  
@@ -52,7 +54,7 @@ const HOTC = new bcworkshop.Mode("Hammer of The Colossus", HOTCRequirement, HOTC
 
 
 function UpperCrashRequirement(acted, victim, logger){
-    return acted.bey.CurrentMode == false && acted.sp >= 3;
+    return acted.bey.CurrentMode == "Upper" && acted.sp >= 2;
 }
 
 function UpperCrashEffect(acted, victim, logger){
@@ -64,11 +66,11 @@ function UpperCrashEffect(acted, victim, logger){
     }
 }
 
-const UpperCrash = new bcworkshop.Passive("Upper Crash", UpperCrashRequirement, UpperCrashEffect, 90);
+const UpperCrash = new bcworkshop.Passive("Upper Crash", UpperCrashRequirement, UpperCrashEffect, 50);
 
 
 function SmashHammerRequirement(acted, victim, logger){
-    return acted.bey.CurrentMode == true && acted.sp >= 3;
+    return acted.bey.CurrentMode == "Smash" && acted.sp >= 2;
 }
 
 function SmashHammerEffect(acted, victim, logger){
@@ -80,7 +82,7 @@ function SmashHammerEffect(acted, victim, logger){
     }
 }
 
-const SmashHammer = new bcworkshop.Passive("Smash Hammer", SmashHammerRequirement, SmashHammerEffect, 90);
+const SmashHammer = new bcworkshop.Passive("Smash Hammer", SmashHammerRequirement, SmashHammerEffect, 50);
 
 
 const TwinNemesis = new bcworkshop.Beyblade({name: "Twin Nemesis", type: "Attack", imageLink: "https://static.wikia.nocookie.net/beyblade/images/2/21/Beyblade_Twin_Nemesis.png/revision/latest?cb=20180716232248", aliases: ["Twin Noctemis"]})

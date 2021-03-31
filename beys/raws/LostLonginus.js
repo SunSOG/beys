@@ -20,11 +20,11 @@ function TheFirstLeftSpinRequirement(acted, victim, logger){//The First Left Spi
 function TheFirstLeftSpinEffect(acted, victim, logger){//The First Left Spin Effect
     if (victim.bey.sd !== acted.bey.sd){
     let difference;
-    if(acted.atk > victim.atk) difference = acted.atk - victim.atk;
-    else difference = victim.atk - acted.atk;
+    if(acted.stamina > victim.stamina) difference = acted.stamina - victim.stamina;
+    else difference = victim.stamina - acted.stamina;
     acted.atk += difference;
     if (acted.atk > 100) acted.atk = 100;}else{
-        acted.atk += (acted.atk/100 * 15);
+        acted.atk += (acted.atk/100 * 18);
     }
 }
 
@@ -32,13 +32,13 @@ const TheFirstLeftSpin = new bcworkshop.Mode("The First Left Spin", TheFirstLeft
 
 
 function FierceResonanceRequirement(acted, victim, logger){//Fierce Resonance Requirement
-    return acted.sp >= 5 && acted.hp <= (acted.maxhp/100 * 50) && victim.hp <= (victim.maxhp/100 * 50) && !acted.bey.boostUsed;
+    return acted.sp >= 5 && acted.hp <= (acted.maxhp/2) && !acted.bey.boostUsed;
 }
 
 function FierceResonanceEffect(acted, victim, logger){//Fierce Resonance Effect
     acted.bey.boostUsed = true;
     acted.stability += 20;
-    acted.hp += (acted.maxhp/100 * 20);
+    acted.hp += (acted.maxhp/100 * 20 + .1 * acted.lvl);
     logger.add(`[${acted.username}] is getting serious! **Fierce Resonance** activated!`);
 }
 
