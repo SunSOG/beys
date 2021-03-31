@@ -6,7 +6,7 @@ function StartingModeRequirement(acted, victim, logger){//StartingMode Requireme
  }
  
  function StartingModeEffect(acted, victim, logger){//StartingMode Effect
-     switch(acted.bey.DDBMode){
+     switch((Math.floor(Math.random() * 4))){
          case 0:
               acted.bey.type = "Attack";
          break;
@@ -43,9 +43,9 @@ function WindFormEffect(acted, victim, logger){//WindForm Effect
                acted.bey.type = "Stamina";
           break;
      }
-     acted.bey.Form = true;
      acted.stability -= 15;
      victim.hp -= (50 + .4 * acted.lvl);
+     acted.bey.Form = true;
      if (acted.bey.sd == "Right"){
      logger.add(`[${acted.username}] Demon Destroying Bey used **Wind ${acted.bey.animal} Form: ${acted.bey.prefix} Storm**! Type changed to **${acted.bey.type}**!`);
      }else{
@@ -73,8 +73,8 @@ function GaiaFormRequirement(acted, victim, logger){//GaiaForm Requirement
            break;
       }
       victim.stability -= 10;
-      acted.bey.Form = true;
       victim.atk -= (victim.atk/100 * 30 + .5 * acted.lvl);
+      acted.bey.Form = true;
       if (acted.bey.sd == "Right"){
       logger.add(`[${acted.username}] Demon Destroying Bey used **Gaia ${acted.bey.animal} Form: ${acted.bey.prefix} Force**! Type changed to **${acted.bey.type}**!`);
       }else{
@@ -198,7 +198,6 @@ const DemonDestroyingBey = new bcworkshop.Beyblade({name: "Demon Destroying Bey"
 .addProperty("animal", false)
 .addProperty("prefix", false)
 .addProperty("suffix", false)
-.addProperty("DDBMode", "(Math.floor(Math.random() * 4))")
 .setDefaultSD("Right")
 .setSDChangable(true);
 module.exports = DemonDestroyingBey;
