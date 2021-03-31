@@ -21,7 +21,7 @@ const special = new bcworkshop.Special("Special", function req(acted, victim, lo
     message.channel.send(embed);
   });
 
-const KingKerbeus = new bcworkshop.Beyblade({name: "King Kerbeus", type: "Defense", imageLink: "https://vignette.wikia.nocookie.net/beyblade/images/8/88/Beyblade_Kerbeus.png/revision/latest?cb=20181219001015"})
+const KingKerbeus = new bcworkshop.Beyblade({name: "King Kerbeus", type: "Defense", imageLink: "https://media.discordapp.net/attachments/736042245442109441/826656558473281548/image1.png?width=630&height=586"})
 .attachPassive(passive)
 .attachSpecial(special)
 .setDefaultSD("RIGHT")

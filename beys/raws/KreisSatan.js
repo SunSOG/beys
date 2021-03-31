@@ -69,7 +69,7 @@ const special = new bcworkshop.Special("Special", function req(acted, victim, lo
 		break;
   }});
 
-const KreisSatan = new bcworkshop.Beyblade({name: "Kreis Satan", type: "Defense", imageLink: "https://vignette.wikia.nocookie.net/beyblade/images/5/5a/Beyblade_Satomb.png/revision/latest?cb=20180716232711"})
+const KreisSatan = new bcworkshop.Beyblade({name: "Kreis Satan", type: "Defense", imageLink: "https://media.discordapp.net/attachments/736042245442109441/826657411175677992/image0.png?width=610&height=586"})
 .attachPassive(passive)
 .attachSpecial(special)
 .setDefaultSD("RIGHT")

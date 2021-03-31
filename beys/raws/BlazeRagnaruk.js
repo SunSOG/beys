@@ -29,7 +29,7 @@ const special = new bcworkshop.Special("Special", function req(acted, victim, lo
     message.channel.createMessage({embed: embed});
   });
 
-const BlazeRagnaruk = new bcworkshop.Beyblade({name: "Blaze Ragnaruk", type: "Stamina", imageLink: "https://vignette.wikia.nocookie.net/beyblade/images/c/c7/Beyblade_Blaze_Ragnaruk.png/revision/latest?cb=20180716232911"})
+const BlazeRagnaruk = new bcworkshop.Beyblade({name: "Blaze Ragnaruk", type: "Stamina", imageLink: "https://media.discordapp.net/attachments/736042245442109441/826657119603785728/image1.png?width=600&height=586"})
 .attachPassive(passive)
 .attachSpecial(special)
 .setDefaultSD("RIGHT")

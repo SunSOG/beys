@@ -54,7 +54,7 @@ const special = new bcworkshop.Special("Special", function req(acted, victim, lo
 	message.channel.createMessage({embed: embed2});
   }});
 
-const NightmareLonginus = new bcworkshop.Beyblade({name: "Nightmare Longinus", type: "Attack", imageLink: "https://vignette.wikia.nocookie.net/beyblade/images/a/a5/Beyblade_Nightmare_Longinus.png/revision/latest?cb=20200218030950"})
+const NightmareLonginus = new bcworkshop.Beyblade({name: "Nightmare Longinus", type: "Attack", imageLink: "https://media.discordapp.net/attachments/736042245442109441/826657288722317323/image1.png?width=615&height=587"})
 .attachPassive(passive)
 .attachSpecial(special)
 .setDefaultSD("RIGHT")

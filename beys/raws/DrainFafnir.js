@@ -56,7 +56,7 @@ function TrueDrainSpinEffects(acted, victim, logger){//True Drain Spin Effects
 const TrueDrainSpin = new bcworkshop.Mode("True Drain Spin", TrueDrainSpinRequirements, TrueDrainSpinEffects);
 
 
-const DrainFafnir = new bcworkshop.Beyblade({name: "Drain Fafnir", type: "Stamina", imageLink: "https://static.wikia.nocookie.net/beyblade/images/2/21/Beyblade_Drain_Fafnir.png/revision/latest?cb=20180716233052"})
+const DrainFafnir = new bcworkshop.Beyblade({name: "Drain Fafnir", type: "Stamina", imageLink: "https://media.discordapp.net/attachments/736042245442109441/826657411468886036/image1.png"})
 .attachPassive(NothingBreak)
 .attachMode(DrainSpin)
 .attachMode(TrueDrainSpin)

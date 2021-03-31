@@ -42,7 +42,7 @@ const special = new bcworkshop.Special("Special", function req(acted, victim, lo
     message.channel.createMessage({embed: embed});
   });
 
-const GodValkyrie = new bcworkshop.Beyblade({name: "God Valkyrie", type: "Attack", imageLink: "https://vignette.wikia.nocookie.net/beyblade/images/f/fb/Beyblade_God_Valkyrie.png/revision/latest?cb=20200126233810"})
+const GodValkyrie = new bcworkshop.Beyblade({name: "God Valkyrie", type: "Attack", imageLink: "https://media.discordapp.net/attachments/736042245442109441/826657119175835679/image0.png?width=682&height=586"})
 .attachPassive(passive)
 .attachSpecial(special)
 .setDefaultSD("RIGHT")

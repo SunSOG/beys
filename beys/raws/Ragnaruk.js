@@ -28,7 +28,7 @@ const special = new bcworkshop.Special("Special", function req(acted, victim, lo
     message.channel.createMessage({embed: embed});
   });
 
-const Ragnaruk = new bcworkshop.Beyblade({name: "Ragnaruk", type: "Stamina", imageLink: "https://i.ibb.co/tJGWckG/ragnaruk.png"})
+const Ragnaruk = new bcworkshop.Beyblade({name: "Ragnaruk", type: "Stamina", imageLink: "https://media.discordapp.net/attachments/736042245442109441/826656329635987466/image0.png"})
 .attachPassive(passive)
 .attachSpecial(special)
 .setDefaultSD("RIGHT")

@@ -39,7 +39,7 @@ const special = new bcworkshop.Special("Special", function req(acted, victim, lo
     message.channel.createMessage({embed: embed});
   });
 
-const Baldur = new bcworkshop.Beyblade({name: "Baldur", type: "Defense", imageLink: "https://vignette.wikia.nocookie.net/beyblade/images/4/4c/LayerBaldur.png/revision/latest?cb=20160717034351"})
+const Baldur = new bcworkshop.Beyblade({name: "Baldur", type: "Defense", imageLink: "https://media.discordapp.net/attachments/736042245442109441/826656822244147251/image1.png"})
 .attachPassive(passive)
 .attachSpecial(special)
 .setDefaultSD("RIGHT")

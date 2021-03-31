@@ -60,7 +60,7 @@ const special = new bcworkshop.Special("Special", function req(acted, victim, lo
 	 }
   });
 
-const SiegXcalibur = new bcworkshop.Beyblade({name: "Sieg Xcalibur", type: "Attack", imageLink: "https://vignette.wikia.nocookie.net/beyblade/images/1/11/Beyblade_Sieg_Xcalibur.png/revision/latest?cb=20180716235603"})
+const SiegXcalibur = new bcworkshop.Beyblade({name: "Sieg Xcalibur", type: "Attack", imageLink: "https://media.discordapp.net/attachments/736042245442109441/826657288373796926/image0.png?width=606&height=587"})
 .attachPassive(passive)
 .attachSpecial(special)
 .setDefaultSD("RIGHT")

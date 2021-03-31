@@ -51,7 +51,7 @@ const special = new bcworkshop.Special("Special", function req(acted, victim, lo
 	message.channel.createMessage({embed: embed2});
   }});
 
-const XenoXcalibur = new bcworkshop.Beyblade({name: "Xeno Xcalibur", type: "Attack", imageLink: "https://vignette.wikia.nocookie.net/beyblade/images/2/28/Beyblade_Xcalibur.png/revision/latest?cb=20181219003322"})
+const XenoXcalibur = new bcworkshop.Beyblade({name: "Xeno Xcalibur", type: "Attack", imageLink: "https://media.discordapp.net/attachments/736042245442109441/826656759519117332/image1.png?width=631&height=586"})
 .attachPassive(passive)
 .attachSpecial(special)
 .setDefaultSD("RIGHT")

@@ -57,7 +57,7 @@ function buse(acted, victim, logger){
 
 const Boost = new bcworkshop.Passive("Boost", breq, buse);
 
-const VictoryValkyrie = new bcworkshop.Beyblade({name: "Victory Valkyrie", type: "Attack", imageLink: "https://static.wikia.nocookie.net/beyblade/images/2/2b/Beyblade_Valkyrie.png/revision/latest/scale-to-width-down/308?cb=20181218234925", aliases: ["Victory Valtryek"]})
+const VictoryValkyrie = new bcworkshop.Beyblade({name: "Victory Valkyrie", type: "Attack", imageLink: "https://media.discordapp.net/attachments/736042245442109441/826656330042703922/image1.png?width=656&height=587", aliases: ["Victory Valtryek"]})
 .setDefaultSD("RIGHT")
 .addProperty("logged", false)
 .addProperty("boostUsed", false)
