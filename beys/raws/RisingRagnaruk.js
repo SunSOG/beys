@@ -28,7 +28,7 @@ const special = new bcworkshop.Special("Special", function req(acted, victim, lo
     message.channel.createMessage({embed: embed});
   });
 
-const RisingRagnaruk = new bcworkshop.Beyblade({name: "Rising Ragnaruk", type: "Stamina", imageLink: "https://vignette.wikia.nocookie.net/beyblade/images/3/3c/Beyblade_Ragnaruk.png/revision/latest?cb=20181219001611"})
+const RisingRagnaruk = new bcworkshop.Beyblade({name: "Rising Ragnaruk", type: "Stamina", imageLink: "https://media.discordapp.net/attachments/736042245442109441/826656557760643072/image0.png?width=654&height=586"})
 .attachPassive(passive)
 .attachSpecial(special)
 .setDefaultSD("RIGHT")

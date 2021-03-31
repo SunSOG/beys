@@ -43,7 +43,7 @@ const special = new bcworkshop.Special("Special", function req(acted, victim, lo
     message.channel.createMessage({embed: embed});
   });
 
-const TornadoWyvern = new bcworkshop.Beyblade({name: "Tornado Wyvern", type: "Defense", imageLink: "https://vignette.wikia.nocookie.net/beyblade/images/7/76/Beyblade_Tornado_Wyvern.png/revision/latest?cb=20180716233432"})
+const TornadoWyvern = new bcworkshop.Beyblade({name: "Tornado Wyvern", type: "Defense", imageLink: "https://media.discordapp.net/attachments/736042245442109441/826657120278806568/image2.png"})
 .attachPassive(passive)
 .attachSpecial(special)
 .setDefaultSD("RIGHT")

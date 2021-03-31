@@ -42,7 +42,7 @@ const special = new bcworkshop.Special("Special", function req(acted, victim, lo
 	message.channel.createMessage({embed: embed2});
   }});
 
-const ZillionZeus = new bcworkshop.Beyblade({name: "Zillion Zeus", type: "Stamina", imageLink: "https://i.ibb.co/NYmmFdy/zeus.png"})
+const ZillionZeus = new bcworkshop.Beyblade({name: "Zillion Zeus", type: "Stamina", imageLink: "https://media.discordapp.net/attachments/736042245442109441/826656759980621844/image2.png?width=655&height=587"})
 .attachPassive(passive)
 .attachSpecial(special)
 .setDefaultSD("RIGHT")

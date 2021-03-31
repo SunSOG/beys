@@ -1,5 +1,4 @@
 const bcworkshop = require("bcworkshop");
-const { MessageEmbed } = require("discord.js");
 
 function MetalDragonCrushRequirement(acted, victim, logger){
     return acted.hp <= (acted.maxhp/100 * 20) && !acted.bey.Used;
@@ -37,7 +36,7 @@ function MetalDragonRampageEffect(acted, victim, logger){
 
 const MetalDragonRampage = new bcworkshop.Passive("Metal Dragon Rampage", MetalDragonRampageRequirement, MetalDragonRampageEffect);
 
-const NightmareLonginus = new bcworkshop.Beyblade({name: "Nightmare Longinús", type: "Attack", imageLink: "https://static.wikia.nocookie.net/beyblade/images/a/a5/Beyblade_Nightmare_Longinus.png/revision/latest?cb=20200218030950", aliases: ["Nightmare Lúinor"]})
+const NightmareLonginus = new bcworkshop.Beyblade({name: "Nightmare Longinús", type: "Attack", imageLink: "https://media.discordapp.net/attachments/736042245442109441/826657288722317323/image1.png?width=615&height=587", aliases: ["Nightmare Lúinor"]})
 .addProperty("Used", false)
 .attachSpecial(MetalDragonCrush)
 .attachMode(MetalDragonCrushPassive)

@@ -54,7 +54,7 @@ function DeterminationResonanceEffect(acted, victim, logger){//Determination Res
 const DeterminationResonance = new bcworkshop.Passive("Determination Resonance", DeterminationResonanceRequirement, DeterminationResonanceEffect, 180);
 
 
-const StormSpriggan = new bcworkshop.Beyblade({name: "Storm Spriggan", type: "Balance", imageLink: "https://vignette.wikia.nocookie.net/beyblade/images/a/a7/Beyblade_Spriggan.png/revision/latest?cb=20181218235223", aliases: ["Storm Spryzen"]})
+const StormSpriggan = new bcworkshop.Beyblade({name: "Storm Spriggan", type: "Balance", imageLink: "https://media.discordapp.net/attachments/736042245442109441/826656330315202590/image2.png?width=601&height=586", aliases: ["Storm Spryzen"]})
 .attachPassive(CounterBreak)
 .attachSpecial(UpperLaunch)
 .attachPassive(DeterminationResonance)

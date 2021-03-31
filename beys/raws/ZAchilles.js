@@ -20,7 +20,7 @@ const special = new bcworkshop.Special("Special", function req(acted, victim, lo
     message.channel.send(embed);
   });
 
-const ZAchilles = new bcworkshop.Beyblade({name: "Z Achilles", type: "Balance", imageLink: "https://vignette.wikia.nocookie.net/beyblade/images/4/4e/Anime_zA.png/revision/latest?cb=20180404012936"})
+const ZAchilles = new bcworkshop.Beyblade({name: "Z Achilles", type: "Balance", imageLink: "https://media.discordapp.net/attachments/736042245442109441/826657592041406504/image2.png"})
 .attachPassive(passive)
 .attachSpecial(special)
 .setDefaultSD("RIGHT")

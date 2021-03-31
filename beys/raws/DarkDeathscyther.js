@@ -39,7 +39,7 @@ const special = new bcworkshop.Special("Special", function req(acted, victim, lo
     message.channel.createMessage({embed: embed});
   });
 
-const DarkDeathscyther = new bcworkshop.Beyblade({name: "Dark Deathscyther", type: "Attack", imageLink: "https://vignette.wikia.nocookie.net/beyblade/images/6/68/Beyblade_Deathscyther.png/revision/latest?cb=20181219002723"})
+const DarkDeathscyther = new bcworkshop.Beyblade({name: "Dark Deathscyther", type: "Attack", imageLink: "https://media.discordapp.net/attachments/736042245442109441/826656558976860180/image2.png?width=651&height=586"})
 .attachPassive(passive)
 .attachSpecial(special)
 .setDefaultSD("RIGHT")
