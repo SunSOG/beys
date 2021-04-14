@@ -54,7 +54,7 @@ function FIFRequirements(acted, victim, logger){
 }
 
 function FIF(acted, victim, logger){
-    if((Math.floor(Math.random() * 99) <= 9)){
+    if((Math.floor(Math.random() * 9) <= 7)){
          acted.hp += (victim.atk/100 * (120 + .3 * acted.lvl));
          acted.sp -= 3;
          logger.add(`[${acted.username}] Hell Salamander activated **Forged in Fire**!`);
@@ -69,7 +69,7 @@ function UTRequirements(acted, victim, logger){
 }
 
 function UT(acted, victim, logger){
-     if((Math.floor(Math.random() * 99) <= 29)){
+     if((Math.floor(Math.random() * 9) <= 4)){
           victim.atk -= (victim.atk = (victim.atk/100 * (30 - .3 * acted.lvl)));
           acted.stability -= 5;
           acted.sp -= 4;
