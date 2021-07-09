@@ -2,7 +2,7 @@ const bcworkshop = require("bcworkshop");
 const { MessageEmbed } = require("discord.js");
 //----------------------------------------------------------------------------------------------------------------
 function SACheck(acted, victim, logger){
-    return acted.sp >= 3 && acted.bey.UnearthSpeed.active == false;
+    return acted.sp >= 3 && !acted.bey.UnearthSpeed.active;
 }
 
 function SAExecute(acted, victim, logger){
@@ -15,7 +15,7 @@ const Supernova = new bcworkshop.Special("Stardust Supernova", SACheck, SAExecut
 //----------------------------------------------------------------------------------------------------------------
 
 function SA1Check(acted, victim, logger){
-    return acted.sp >= 5 && acted.bey.UnearthSpeed.active == true;
+    return acted.sp >= 5 && !!acted.bey.UnearthSpeed.active;
 }
 
 function SA1Execute(acted, victim, logger){
