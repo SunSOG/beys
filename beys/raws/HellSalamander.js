@@ -6,7 +6,7 @@ function SRHSRequirement(acted, victim, logger){
 
 function SRHS(acted, victim, logger){
      victim.hp -= (50 + .7 * acted.lvl);
-     acted.stamina -= (1 + .008 * acted.lvl);
+     acted.stamina -= (1 + .007 * acted.lvl);
      acted.stability -= 20;
      victim.stability -= 25;
      acted.sp -= 3;
@@ -21,7 +21,7 @@ function RCHRequirement(acted, victim, logger){
 }
 
 function RCH(acted, victim, logger){
-      acted.stamina = (1 + .018 * acted.lvl);
+      acted.stamina = (1 + .016 * acted.lvl);
       acted.stability += 5;
       victim.atk = (victim.atk = (victim.atk/100 * (50 - .2 * acted.lvl)));
       acted.sp -= 3;
@@ -55,7 +55,7 @@ function FIFRequirements(acted, victim, logger){
 
 function FIF(acted, victim, logger){
     if((Math.floor(Math.random() * 9) <= 7)){
-         acted.hp += (victim.atk/100 * (120 + .3 * acted.lvl));
+         acted.hp += (victim.atk/100 * (120 + .2 * acted.lvl));
          acted.sp -= 3;
          logger.add(`[${acted.username}] Hell Salamander activated **Forged in Fire**!`);
     }
@@ -70,7 +70,7 @@ function UTRequirements(acted, victim, logger){
 
 function UT(acted, victim, logger){
      if((Math.floor(Math.random() * 9) <= 4)){
-          victim.atk -= (victim.atk = (victim.atk/100 * (30 - .3 * acted.lvl)));
+          victim.atk -= (victim.atk = (victim.atk/100 * (30 - .2 * acted.lvl)));
           acted.stability -= 5;
           acted.sp -= 4;
           logger.add(`[${acted.username}] Hell Salamander activated **Untouchable Flame**!`);

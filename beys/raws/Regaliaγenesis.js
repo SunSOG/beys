@@ -49,7 +49,7 @@ function RegaliaScreamRequirement(acted, victim, logger){
 }
 
 function RegaliaScreamEffect(acted, victim, logger){
-    victim.hp = (victim.hp/100 * 75);
+    victim.hp = (victim.hp/100 * 80);
     acted.sp -= 3;
     logger.add(`[${acted.username}] Regalia γenesis activated **Regalia Scream**!`)
 }
