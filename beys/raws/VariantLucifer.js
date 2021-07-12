@@ -35,7 +35,7 @@ function GodShatteringStarCheck(acted, victim, logger){
 function GodShatteringStarExecute(acted, victim, logger){
   acted.stabililty += 10 + 0.2 * acted.level;
   acted.atk = Math.round((acted.atk/100)*300);
-  acted.hp = 25 + 5 * acted.level;
+  if (!acted.bey.property) acted.hp = 25 + 5 * acted.level;
   acted.stamina = 1 + 0.02 * acted.level;
   logger.add(`[${acted.username}] Variant Lucifer winds up for a kill shot...`);
 }
